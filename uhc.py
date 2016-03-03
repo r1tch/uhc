@@ -36,6 +36,9 @@ if __name__ == '__main__':
         except KeyboardInterrupt:
             logging.info("Exiting after KeyboardInterrupt")
             sys.exit()
+        except SystemExit:
+            logging.info("Exiting after sys.exit()")
+            sys.exit()
         except:
             logging.error(traceback.format_exc())
             print(traceback.format_exc())
