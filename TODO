@@ -1,0 +1,12 @@
+- Logging - DONE
+- Configuration - DONE
+- Event loop + TCP server
+- Modules one by one:
+  - Remote controller, own protocol (TCP server)
+  - ZWave - via json?
+  - XBMC
+  - IR
+  - Paradox
+  - AutoShade -- using entry/exit/sunrise/sunset
+  - SleepSecurity -- sleep detection, etc
+  - Media -- movie mode & co
