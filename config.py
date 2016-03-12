@@ -8,8 +8,8 @@ config = None
 class Config(configparser.ConfigParser):
     def __init__(self, local_dir):
         super().__init__()
-        self.read(local_dir + "/config.ini")
         self.set_default_values()
+        self.read(local_dir + "/config.ini")
 
     def set_default_values(self):
         self.add_section("logging")

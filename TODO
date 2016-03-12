@@ -8,8 +8,11 @@
       - pw in cfg file first
       - no auth if on same network (also config option)
       - otherwise simple challenge-response auth - http://www.hcsw.org/reading/chalresp.txt (challenge random data, resp: md5(data+pw))
+    - ping: if same network, every 5 secs; otherwise every 60secs -- maybe only from client?
   - ZWave - via json?
   - XBMC
+    - osmc2 - play music library from stora
+    - remote control of osmc/kodi
   - IR
   - Paradox
   - AutoShade -- using entry/exit/sunrise/sunset
