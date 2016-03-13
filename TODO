@@ -3,7 +3,7 @@
 - Event loop + TCP server - DONE
 - Modules one by one:
   - Remote controller, own protocol (TCP server)
-    - first only allow from same network
+    - first only allow from same network - DONE
     - authentication later:
       - pw in cfg file first
       - no auth if on same network (also config option)

@@ -3,8 +3,6 @@
 import configparser
 import logging
 
-config = None
-
 class Config(configparser.ConfigParser):
     def __init__(self, local_dir):
         super().__init__()
@@ -17,7 +15,8 @@ class Config(configparser.ConfigParser):
         # -- see logging's source (DEBUG=10, INFO=20, WARNING=30, ERROR=40)
         self.set("logging", "level", str(logging.DEBUG))     # to be replaced by WARNING after prod release
 
-        self.add_section("TODO_New_Section")
+        self.add_section("remote")
+        self.set("remote", "port", str(8888))
 
 
 

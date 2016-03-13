@@ -17,14 +17,14 @@ if __name__ == '__main__':
     except FileExistsError:
         pass
 
-    config.config = config.Config(uhc_local_dir)
+    config = config.Config(uhc_local_dir)
 
     logging.basicConfig(filename=uhc_local_dir + "/uhc.log",
-                        level=config.config.getint("logging", "level"),
+                        level=config.getint("logging", "level"),
                         format='%(asctime)s %(filename)s:%(lineno)s %(levelname)s %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
     logging.info("--------- Init ---------")
-    c = Controller()
+    c = Controller(config)
 
     firstrun = True
     while True :

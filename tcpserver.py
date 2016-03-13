@@ -19,9 +19,8 @@ class TcpServer:
             if TcpServer.RemoteProtocol.is_local(peername[0]):
                 logging.info('TcpServer: local connection from {}'.format(peername))
             else:
-                logging.info('TcpServer: remote connection from {}'.format(peername))
-            print(self.__dict__)
-            # print("Name:" + peername.__class__.__name__)
+                logging.info('TcpServer: remote connection from {} - CLOSING'.format(peername))
+                transport.abort()
 
         def data_received(self, data):
             message = data.decode()
@@ -44,9 +43,9 @@ class TcpServer:
     def createRemoteProtocol(self):
         return TcpServer.RemoteProtocol(self)
 
-    def __init__(self, eventloop):
+    def __init__(self, config, eventloop):
         self.eventloop = eventloop
-        coroutine = self.eventloop.create_server(self.createRemoteProtocol, port=8888)  # TODO get port from config
+        coroutine = self.eventloop.create_server(self.createRemoteProtocol, port=config.getint("remote", "port"))
         self.eventloop.run_until_complete(coroutine)
 
     def testCallback(self, msg):
