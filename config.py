@@ -18,9 +18,7 @@ class Config(configparser.ConfigParser):
         self.add_section("remote")
         self.set("remote", "port", str(8888))
 
-
-
-
-
+        self.add_section("mios")
+        self.set("mios", "host", "10.0.1.51")
 
 

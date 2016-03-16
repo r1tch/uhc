@@ -4,6 +4,7 @@ import asyncio
 import logging
 
 import tcpserver
+import zwavemios
 
 class Controller:
     def __init__(self, config):
@@ -14,6 +15,7 @@ class Controller:
         eventloop = asyncio.get_event_loop()
         eventloop.set_debug(True)
         eventloop.call_soon(Controller.w, self)
+        self.zwavemios = zwavemios.ZWaveMios(self.config, eventloop)
 
         self.tcpserver = tcpserver.TcpServer(self.config, eventloop)
         eventloop.run_forever()

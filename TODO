@@ -10,6 +10,12 @@
       - otherwise simple challenge-response auth - http://www.hcsw.org/reading/chalresp.txt (challenge random data, resp: md5(data+pw))
     - ping: if same network, every 5 secs; otherwise every 60secs -- maybe only from client?
   - ZWave - via json?
+    - async http
+    - yes, json, simple: https://docs.python.org/2/library/json.html
+    - dl devices
+    - remote ctrl:
+      - queryable list
+      - on-off
   - XBMC
     - osmc2 - play music library from stora
     - remote control of osmc/kodi
