@@ -20,5 +20,6 @@ class Config(configparser.ConfigParser):
 
         self.add_section("mios")
         self.set("mios", "host", "10.0.1.51")
+        self.set("mios", "update_frequency_secs", "3")
 
 
