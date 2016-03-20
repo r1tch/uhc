@@ -9,13 +9,14 @@ from zwavemiosnodelistquery import ZWaveMiosNodelistQuery
 from zwavemiosstatusupdate import ZWaveMiosStatusUpdate
 
 class ZWaveMios:
-    def __init__(self, config, eventloop):
+    def __init__(self, config, eventloop, listeners):
         self.config = config
         self.eventloop = eventloop
         self.zwavenodes = ZWaveNodes()
         self.nodelistquery = ZWaveMiosNodelistQuery(config, eventloop, self.gotNodes)
         self.statusupdate = ZWaveMiosStatusUpdate(config, eventloop, self.statusCallback)
-        self.listeners = []
+        self.listeners = listeners
+        self.levels = {}
 
     def gotNodes(self, zwavenodes):
         self.zwavenodes = zwavenodes
@@ -23,6 +24,16 @@ class ZWaveMios:
         self.statusupdate.startUpdates()
 
     def statusCallback(self, newlevels):
-        # TODO notify listeners -- only about changes? yes!
-        pass
+        changedLevels = {}
+
+        for id in newlevels:
+            newlevel = newlevels[id]
+            if not id in self.levels or newlevel != self.levels[id]:
+                self.levels[id] = newlevel
+                name = self.zwavenodes.byId(id).name
+                logging.info("New level for {} ({}): {}".format(id, name, newlevel))
+                changedLevels[id] = newlevel
+
+        for listener in self.listeners:
+            listener.changedLevels(changedLevels)
 

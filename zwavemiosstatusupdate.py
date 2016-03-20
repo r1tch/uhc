@@ -41,9 +41,10 @@ class ZWaveMiosStatusUpdate:
             variable = state['variable']
             value = state['value']
             if service.endswith("SwitchPower1") and variable == "Status":
-                newlevels[id] = value * 100
+                newlevels[id] = int(value) * 100
+                return      # TODO to override LoadLevelStatus which returns bogus 255 for binary switches
             elif service.endswith("Dimming1") and variable == "LoadLevelStatus":
-                newlevels[id] = value
+                newlevels[id] = int(value)
 
         #self.printStates(id, states)
 
