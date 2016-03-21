@@ -21,6 +21,9 @@ class ZWaveNodes:
     def byName(self, name):
         return self._byName[name]
 
+    def typeOf(self, id):
+        return self._byId[int(id)].type
+
     def allNodes(self):
         return self._byId.values()
 

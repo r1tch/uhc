@@ -3,7 +3,7 @@
 import logging
 import requests
 
-from zwavenodes import ZWaveNodes
+from .nodes import ZWaveNodes
 
 class ZWaveMiosNodelistQuery:
     USER_DATA_URL=":3480/data_request?id=user_data&output_format=json"

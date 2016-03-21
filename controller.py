@@ -4,9 +4,10 @@ import asyncio
 import logging
 
 import tcpserver
-import zwavemios
+from zwave.mios import ZWaveMios
 
 class Controller:
+    """Serves as factory, container and coordinator of Service classes"""
     def __init__(self, config):
         self.config = config
 
@@ -15,7 +16,7 @@ class Controller:
         eventloop = asyncio.get_event_loop()
         eventloop.set_debug(True)
         eventloop.call_soon(Controller.w, self)
-        self.zwavemios = zwavemios.ZWaveMios(self.config, eventloop, [])    # TODO listeners here
+        self.zwavemios = ZWaveMios(self.config, eventloop)    # TODO listeners here
 
         self.tcpserver = tcpserver.TcpServer(self.config, eventloop)
         eventloop.run_forever()

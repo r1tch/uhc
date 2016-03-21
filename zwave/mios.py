@@ -4,23 +4,28 @@ import logging
 import requests
 import threading
 
-from zwavenodes import ZWaveNodes
-from zwavemiosnodelistquery import ZWaveMiosNodelistQuery
-from zwavemiosstatusupdate import ZWaveMiosStatusUpdate
+from .nodes import ZWaveNodes
+from .miosnodelistquery import ZWaveMiosNodelistQuery
+from .miosstatusupdate import ZWaveMiosStatusUpdate
 
 class ZWaveMios:
-    def __init__(self, config, eventloop, listeners):
+    def __init__(self, config, eventloop):
         self.config = config
         self.eventloop = eventloop
-        self.zwavenodes = ZWaveNodes()
+        self.zwavenodes = None
         self.nodelistquery = ZWaveMiosNodelistQuery(config, eventloop, self.gotNodes)
         self.statusupdate = ZWaveMiosStatusUpdate(config, eventloop, self.statusCallback)
-        self.listeners = listeners
+        self.listeners = [] # TODO remove
         self.levels = {}
 
     def gotNodes(self, zwavenodes):
         self.zwavenodes = zwavenodes
         # TODO notify listeners about new node list
+        self.statusupdate.setNodes(self.zwavenodes)
+
+        for listener in self.listeners:
+            listener.zwaveGotNodes(zwavenodes.allNodes())
+        
         self.statusupdate.startUpdates()
 
     def statusCallback(self, newlevels):
@@ -35,5 +40,6 @@ class ZWaveMios:
                 changedLevels[id] = newlevel
 
         for listener in self.listeners:
-            listener.changedLevels(changedLevels)
+            listener.zwaveChangedLevels(changedLevels)
+
 

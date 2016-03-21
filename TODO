@@ -9,7 +9,18 @@
       - no auth if on same network (also config option)
       - otherwise simple challenge-response auth - http://www.hcsw.org/reading/chalresp.txt (challenge random data, resp: md5(data+pw))
     - ping: if same network, every 5 secs; otherwise every 60secs -- maybe only from client?
-  - ZWave - via json?
+    - abstraction: Services, subscriber (events) & commands 
+      - Service: one instance of each class (for now)
+      - Controller: repository of services
+      - Event: unsolicited, broadcast
+      - Command: can have return value for query-response (eg, to query a list, etc)
+      - note: response-reply
+      - TcpServer also a Service
+      - registered as listener in services
+      - commands sent to TcpServer define a unique service ID (ZWave, IR)
+      - Automators are services as well
+      - Controller holds Services
+  - ZWave - via json
     - async http - DONE
     - yes, json, simple: https://docs.python.org/2/library/json.html
     - dl devices - DONE

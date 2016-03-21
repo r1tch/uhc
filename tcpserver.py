@@ -18,6 +18,7 @@ class TcpServer:
             self.transport = transport
             if TcpServer.RemoteProtocol.is_local(peername[0]):
                 logging.info('TcpServer: local connection from {}'.format(peername))
+                # TODO report self to TcpServer for broadcasts
             else:
                 logging.info('TcpServer: remote connection from {} - CLOSING'.format(peername))
                 transport.abort()

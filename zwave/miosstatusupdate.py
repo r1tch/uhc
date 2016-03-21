@@ -10,6 +10,10 @@ class ZWaveMiosStatusUpdate:
         self.config = config
         self.eventloop = eventloop
         self.statusCallback = statusCallback
+        self.zwavenodes = None
+
+    def setNodes(self, zwavenodes):
+        self.zwavenodes = zwavenodes
 
     def startUpdates(self):
         self.eventloop.run_in_executor(None, self.getStatusInThread)
@@ -34,12 +38,16 @@ class ZWaveMiosStatusUpdate:
             logging.error("No 'id' or no 'states' in device JSON: " + str(device))
             return
 
+        # the stupidity: while both binary switches and dimmers report load levels,
+        # switches sometimes send a load level of 255 even when turned off
+        # -> we must know the type of the device
         id = device['id']
         states = device['states']
         for state in states:
             service = str(state['service'])
             variable = state['variable']
             value = state['value']
+            # TODO continue here, use type of node to decide what to do
             if service.endswith("SwitchPower1") and variable == "Status":
                 newlevels[id] = int(value) * 100
                 return      # TODO to override LoadLevelStatus which returns bogus 255 for binary switches
