@@ -11,44 +11,60 @@ from .miosstatusupdate import ZWaveMiosStatusUpdate
 
 class ZWaveMios(Service):
     def __init__(self, container, config, eventloop):
-        super(container)
+        super().__init__(container)
         self.config = config
         self.eventloop = eventloop
         self.zwavenodes = None
-        self.nodelistquery = ZWaveMiosNodelistQuery(config, eventloop, self.gotNodes)
-        self.statusupdate = ZWaveMiosStatusUpdate(config, eventloop, self.statusCallback)
+        self.nodelistquery = ZWaveMiosNodelistQuery(config, eventloop, self._gotNodes)
+        self.statusupdate = ZWaveMiosStatusUpdate(config, eventloop, self._statusCallback)
         self.levels = {}
 
     # @override
     def id(self):
         return "zwave"
 
+    # @override
+    def msg(self, fromService, msgDict):
+        if msgDict["msg"] == "getNodes":
+            response = self._allNodesMsg()
+            response["origMsg"] = msgDict
+            fromService.msg(self, response)
+        else:
+            logging.error("Unknown msg: {}", msgDict["msg"])
+
+    # @override
     def execute(self, command):
         # TODO turn stuff on-off
         raise NotImplementedError
 
-    def gotNodes(self, zwavenodes):
+    def _allNodesMsg(self):
+        return { "msg": "gotNodes", "nodes": self.zwavenodes.allNodes()}
+
+    def _gotNodes(self, zwavenodes):
         self.zwavenodes = zwavenodes
         # TODO notify listeners about new node list
         self.statusupdate.setNodes(self.zwavenodes)
 
-        for listener in self.listeners:
-            listener.zwaveGotNodes(zwavenodes.allNodes())
+        self.broadcast(self._allNodesMsg())
         
         self.statusupdate.startUpdates()
 
-    def statusCallback(self, newlevels):
+    def _statusCallback(self, newlevels):
         changedLevels = {}
 
         for id in newlevels:
+            if id not in self.zwavenodes.allIds():
+                logging.error("Got level for unknown id '{}'".format(id))
+                continue
+
             newlevel = newlevels[id]
-            if not id in self.levels or newlevel != self.levels[id]:
-                self.levels[id] = newlevel
-                name = self.zwavenodes.byId(id).name
-                logging.info("New level for {} ({}): {}".format(id, name, newlevel))
+            node = self.zwavenodes.byId(id)
+            if newlevel != node.level:
+                node.level = newlevel
+                logging.info("New level for {} ({}): {}".format(id, node.name, newlevel))
                 changedLevels[id] = newlevel
 
-        for listener in self.listeners:
-            listener.zwaveChangedLevels(changedLevels)
+        if len(changedLevels):
+            self.broadcast({ "msg": "changedLevels", "changedLevels": changedLevels })
 
 

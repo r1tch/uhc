@@ -14,8 +14,8 @@ class Controller:
 
     def addServices(self, eventloop):
         """Hardcoding a list of services - later we might add auto-detection of services present"""
-        ZWaveMios(self, self.config, eventloop).addTo(self.services)
-        TcpServer(self, self.config, eventloop).addTo(self.services)
+        ZWaveMios(self, self.config, eventloop)
+        TcpServer(self, self.config, eventloop)
 
     def run(self):
         logging.info("Controller startup")

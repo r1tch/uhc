@@ -5,24 +5,25 @@ class Service:
     def __init__(self, container):
         self.container = container
         self.listeners = set()
+        self.container.services[self.id()] = self
 
-    def addListener(self, listener):
-        if not callable(listener.event):
-            raise TypeError("listener.event should be callable")
-        self.listeners.add(listener)
+    def broadcast(self, msgDict):
+        for service in self.container.services.values():
+            if service != self:         # do not send to self - we should use methods to do stuff privately
+                service.msg(self, msgDict)
+
+    def sendTo(self, toServiceId, msgDict):
+        if toServiceId not in self.container.services:
+            return
+
+        toService = self.container.services[toServiceId]
+        toService.msg(self, msgDict)
 
     def id(self):
         """Should return a unique ID"""
         raise NotImplementedError
 
-    def addTo(self, services):
-        services[self.id()] = self
-
-    def broadcast(self, event):
-        """Called by subclasses upon events"""
-        for listener in listeners:
-            listener.event(self, event)     ## TODO listener base class? event(sourceService, event)
-
-    def execute(self, command):
-        """Execute a command, command being a dict() (convertable from JSON), retval being a dict() too (for JSON); should return immediately!"""
+    def msg(self, fromService, msgDict):
+        """Sends a message (dict) to this service - response also happens via msg call(s)"""
         raise NotImplementedError
+

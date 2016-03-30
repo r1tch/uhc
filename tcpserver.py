@@ -6,6 +6,7 @@ import logging
 import sys
 
 from service import Service
+from uhcjson import UhcJsonEncoder
 
 class TcpServer(Service):
     class RemoteProtocol(asyncio.Protocol):
@@ -19,15 +20,20 @@ class TcpServer(Service):
             self.transport = transport
             if TcpServer.RemoteProtocol.is_local(peername[0]):
                 logging.info('TcpServer: local connection from {}'.format(peername))
-                # TODO report self to TcpServer for broadcasts
+                self.tcpServer._newConnection(self)
             else:
                 logging.info('TcpServer: remote connection from {} - CLOSING'.format(peername))
                 transport.abort()
 
+        def connection_lost(self, exception):
+            peername = self.transport.get_extra_info('peername')
+            logging.info('TcpServer: connection lost from {}'.format(peername))
+            self.tcpServer.connections.remove(self)
+
         def data_received(self, data):
             message = data.decode()
             print('Data received: {!r}'.format(message))
-            self.tcpServer.testCallback(message)
+            self.tcpServer._testCallback(message)
 
             if message == "exit\n":
                 sys.exit()
@@ -42,14 +48,46 @@ class TcpServer(Service):
 
             return address.is_private or address.is_local or address.is_link_local
 
-    def createRemoteProtocol(self):
+    def __init__(self, container, config, eventloop):
+        super().__init__(container)
+        self.eventloop = eventloop
+        self.connections = set()
+        coroutine = self.eventloop.create_server(self._createRemoteProtocol, port=config.getint("remote", "port"))
+        self.eventloop.run_until_complete(coroutine)
+   
+    #@override
+    def id(self):
+        return "tcpserver"
+
+    #@override
+    def msg(self, fromService, msgDict):
+        # hm, maybe we just want to send out everything verbatim
+       
+        msgDict["fromService"] = fromService.id()
+
+        targetConnection = None
+        if "origMsg" in msgDict:
+            targetConnection = msgDict["origMsg"]["connection"]
+            del msgDict["origMsg"]
+        
+        jsonStr = UhcJsonEncoder().encode(msgDict)
+
+        if targetConnection:
+            self._writeTo(targetConnection, jsonStr)
+        else:
+            for connection in self.connections:
+                self._writeTo(connection, jsonStr)
+        
+    def _writeTo(self, connection, jsonStr):
+        connection.transport.write((jsonStr + "\n").encode())
+
+    def _createRemoteProtocol(self):
         return TcpServer.RemoteProtocol(self)
 
-    def __init__(self, container, config, eventloop):
-        super(container)
-        self.eventloop = eventloop
-        coroutine = self.eventloop.create_server(self.createRemoteProtocol, port=config.getint("remote", "port"))
-        self.eventloop.run_until_complete(coroutine)
+    def _newConnection(self, connection):
+        self.connections.add(connection)
+        msgDict = { "msg": "getNodes", "connection": connection }
+        self.sendTo("zwave", msgDict)
 
-    def testCallback(self, msg):
+    def _testCallback(self, msg):
         print("testcallback: " + msg)

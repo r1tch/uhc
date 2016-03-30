@@ -11,22 +11,19 @@
     - ping: if same network, every 5 secs; otherwise every 60secs -- maybe only from client?
     - abstraction: Services, subscriber (events) & commands 
       - Service: one instance of each class (for now)
-      - Controller: repository of services
-      - Event: unsolicited, broadcast
-      - Command: can have return value for query-response (eg, to query a list, etc)
-          - it's a dict, { "svc": service_id, .. } -- "svc" used by controller to send to proper svc
-      - note: response-reply
-      - TcpServer also a Service
-      - registered as listener in services
-      - commands sent to TcpServer define a unique service ID (ZWave, IR)
+        - msg can be sent; originator as param
+        - directed response can be sent to originator, facilitating query-response
+        - eg 1: zwave got list of nodes -> Controller.broadcast(nodes) -> calls Service.msg(zwave, nodes), no response expected
+        - eg 2: query list of nodes: tcpserver calls zwave.msg(tcpserver, { msg: getNodes }); zwave calls tcpserver.msg(zwave, nodesAsDict)
+      - Controller: repository of services - DONE
+      - TcpServer also a Service - DONE
       - Automators are services as well
-      - Controller holds Services
   - ZWave - via json
     - async http - DONE
     - yes, json, simple: https://docs.python.org/2/library/json.html
     - dl devices - DONE
     - remote ctrl:
-      - queryable list
+      - queryable list - DONE
       - on-off
   - Simple Android client; initially ZWave control only
   - XBMC

@@ -6,6 +6,7 @@ class ZWaveNodes:
             self.id = int(id)
             self.name = name
             self.type = type
+            self.level = 0              # later we might introduce subclasses, for now this is enough
 
     def __init__(self):
         self._byName = {}
@@ -24,14 +25,16 @@ class ZWaveNodes:
     def typeOf(self, id):
         return self._byId[int(id)].type
 
+    def levelOf(self, id):
+        return self._byId[int(id)].level
+
+    def allIds(self):
+        return self._byId.keys()
+
     def allNodes(self):
         return self._byId.values()
 
     def __len__(self):
         return len(self._byId)
 
-    def byType(self, type):
-        # TODO reduce _byId.values() by type & lambda
-        # TODO needed at all??
-        pass
 
