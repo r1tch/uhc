@@ -14,6 +14,7 @@
       - Controller: repository of services
       - Event: unsolicited, broadcast
       - Command: can have return value for query-response (eg, to query a list, etc)
+          - it's a dict, { "svc": service_id, .. } -- "svc" used by controller to send to proper svc
       - note: response-reply
       - TcpServer also a Service
       - registered as listener in services

@@ -12,8 +12,11 @@ class Service:
         self.listeners.add(listener)
 
     def id(self):
-        """Should return a possibly unique ID, for brevity, let's use 2chr strings"""
+        """Should return a unique ID"""
         raise NotImplementedError
+
+    def addTo(self, services):
+        services[self.id()] = self
 
     def broadcast(self, event):
         """Called by subclasses upon events"""
@@ -21,5 +24,5 @@ class Service:
             listener.event(self, event)     ## TODO listener base class? event(sourceService, event)
 
     def execute(self, command):
-        """Execute a command, command being a dict() (convertable from JSON)"""
+        """Execute a command, command being a dict() (convertable from JSON), retval being a dict() too (for JSON); should return immediately!"""
         raise NotImplementedError

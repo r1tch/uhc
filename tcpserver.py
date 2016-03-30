@@ -5,8 +5,9 @@ import ipaddress
 import logging
 import sys
 
+from service import Service
 
-class TcpServer:
+class TcpServer(Service):
     class RemoteProtocol(asyncio.Protocol):
         def __init__(self, tcpServer):
             self.tcpServer = tcpServer
@@ -44,7 +45,8 @@ class TcpServer:
     def createRemoteProtocol(self):
         return TcpServer.RemoteProtocol(self)
 
-    def __init__(self, config, eventloop):
+    def __init__(self, container, config, eventloop):
+        super(container)
         self.eventloop = eventloop
         coroutine = self.eventloop.create_server(self.createRemoteProtocol, port=config.getint("remote", "port"))
         self.eventloop.run_until_complete(coroutine)

@@ -4,19 +4,28 @@ import logging
 import requests
 import threading
 
+from service import Service
 from .nodes import ZWaveNodes
 from .miosnodelistquery import ZWaveMiosNodelistQuery
 from .miosstatusupdate import ZWaveMiosStatusUpdate
 
-class ZWaveMios:
-    def __init__(self, config, eventloop):
+class ZWaveMios(Service):
+    def __init__(self, container, config, eventloop):
+        super(container)
         self.config = config
         self.eventloop = eventloop
         self.zwavenodes = None
         self.nodelistquery = ZWaveMiosNodelistQuery(config, eventloop, self.gotNodes)
         self.statusupdate = ZWaveMiosStatusUpdate(config, eventloop, self.statusCallback)
-        self.listeners = [] # TODO remove
         self.levels = {}
+
+    # @override
+    def id(self):
+        return "zwave"
+
+    def execute(self, command):
+        # TODO turn stuff on-off
+        raise NotImplementedError
 
     def gotNodes(self, zwavenodes):
         self.zwavenodes = zwavenodes
