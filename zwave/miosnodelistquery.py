@@ -33,23 +33,22 @@ class ZWaveMiosNodelistQuery:
             logging.error("No 'id', 'name' or 'device' in device JSON: " + str(device))
             return
 
-        logging.info("Got node {}: {} {}".format(device['id'], device['name'], device['device_type']))
-
         nodetype = ZWaveMiosNodelistQuery.TranslateType(device['device_type'])
+        logging.info("Got node {}: {} {} {}".format(device['id'], device['name'], device['device_type'], nodetype))
 
         zwavenode = ZWaveNodes.ZWaveNode(device['id'], device['name'], nodetype)
         self.zwavenodes.add(zwavenode)
 
     def TranslateType(miostype):
-        if miostype.find("ZWaveNetwork"):
+        if miostype.find("ZWaveNetwork") != -1:
             return "ZWaveNetwork"
-        if miostype.find("SceneController"):
+        if miostype.find("SceneController") != -1:
             return "SceneController"
-        if miostype.find("BinaryLight"):
+        if miostype.find("BinaryLight") != -1:
             return "BinaryLight"
-        if miostype.find("DimmableLight"):
+        if miostype.find("DimmableLight") != -1:
             return "DimmableLight"
-        if miostype.find("WindowCovering"):
+        if miostype.find("WindowCovering") != -1:
             return "WindowCovering"
 
         logging.error("Unhandled ZWave device type:" + miostype)

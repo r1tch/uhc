@@ -16,7 +16,7 @@ class ZWaveMiosStatusUpdate:
         self.zwavenodes = zwavenodes
 
     def startUpdates(self):
-        self.eventloop.run_in_executor(None, self.getStatusInThread)
+        self.eventloop.run_in_executor(None, self._getStatusInThread)
 
     def getStatusDone(self, status):
         #print("getStatusDone onthread:" + str(threading.currentThread().ident))
@@ -41,7 +41,7 @@ class ZWaveMiosStatusUpdate:
         # the stupidity: while both binary switches and dimmers report load levels,
         # switches sometimes send a load level of 255 even when turned off
         # -> we must know the type of the device
-        id = device['id']
+        id = int(device['id'])
         states = device['states']
         for state in states:
             service = str(state['service'])
@@ -62,7 +62,7 @@ class ZWaveMiosStatusUpdate:
             print("{} {}: {}".format(state['service'], state['variable'], state['value']))
 
     # Worker thread methods
-    def getStatusInThread(self):
+    def _getStatusInThread(self):
         host = self.config.get("mios", "host")
         url = "http://{}{}".format(host, ZWaveMiosStatusUpdate.STATUS_URL)
         # print("requesting " + url)

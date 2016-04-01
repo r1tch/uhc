@@ -12,7 +12,9 @@
     - abstraction: Services, subscriber (events) & commands 
       - Service: one instance of each class (for now)
         - msg can be sent; originator as param
-        - directed response can be sent to originator, facilitating query-response
+        - QUERY-RESPONSE (also via TCP): directed response can be sent to originator service, specifying original msg in "origMsg"
+          - TcpServer will add a "connection" member into its msg (to the json data)
+          - upon response, "origMsg" member will contain original connection -> that's how we know where to send to
         - eg 1: zwave got list of nodes -> Controller.broadcast(nodes) -> calls Service.msg(zwave, nodes), no response expected
         - eg 2: query list of nodes: tcpserver calls zwave.msg(tcpserver, { msg: getNodes }); zwave calls tcpserver.msg(zwave, nodesAsDict)
       - Controller: repository of services - DONE
@@ -24,7 +26,7 @@
     - dl devices - DONE
     - remote ctrl:
       - queryable list - DONE
-      - on-off
+      - on-off - DONE
   - Simple Android client; initially ZWave control only
   - XBMC
     - osmc2 - play music library from stora

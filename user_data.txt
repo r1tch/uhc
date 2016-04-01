@@ -1,0 +1,1441 @@
+<?xml version="1.0"?>
+<root timezone="0" firmware_version="1" ServerBackup="1" TemperatureFormat="C" FirstSave="1801645867" currency="€" KwhPrice="2" PluginsSynced="1" UnassignedDevices="0" AutomationDevices="0" zwave_heal="1366321441" BuildVersion="*1.5.408*" SvnVersion="*6024*" model="Sercomm NA900" local_udn="uuid:4d494342-5342-5645-0000-000001cb5211" gmt_offset="2" PK_AccessPoint="30102033
+" RA_Server="fwd7.mios.com" RA_Server_Back="fwd6.mios.com" ir="0" device_sync="1,2,4,5,6,7,8,11,12,13,14,15,16,17" DeviceSync="1374811944" DataVersion="629623001" LoadTime="1372629623">
+<devices>
+<device id="1" name="ZWave" device_type="urn:schemas-micasaverde-com:device:ZWaveNetwork:1" device_file="D_ZWaveNetwork.xml" category_num="19" subcategory_num="0" time_created="1333626534" invisible="1" local_udn="uuid:4d494342-5342-5645-0001-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="Use45" value="1" id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="UseMR" value="1" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="LimitNeighbors" value="0" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="LastUpdate" id="3" value="1372629624"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="AutoConfigure" value="1" id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="NetStatusID" id="5" value="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="NetStatusText" id="6" value="#13: Getting the name"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="LockComPort" value="1" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="ComPort" value="/dev/ttyS0" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="PollingEnabled" value="1" id="9"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="PollDelayInitial" value="20" id="10"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="PollDelayDeadTime" value="30" id="11"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="PollMinDelay" value="30" id="12"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="PollFrequency" value="60" id="13"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="VersionInfo" value="3.20 L:1" id="14"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="HomeID" value="House: 16ba077 Node 1 Suc 0" id="15"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="Role" value="Master SIS:NO PRI:YES" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="LastDongleBackup" id="17" value="1366325129"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastTimeOffset" value="2" id="18"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="LastError" id="19" value="Poll failed"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="0" id="20"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="0" id="21"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveNetwork1" variable="LastHeal" value="1366320159" id="22"></state>
+</states>
+<ControlURLs>
+<service_1 service="urn:micasaverde-com:serviceId:ZWaveNetwork1" ControlURL="/upnp/control/dev_1" EventURL="/upnp/event/dev_1" serviceType="urn:schemas-micasaverde-org:service:ZWaveNetwork:1"></service_1>
+</ControlURLs>
+</device>
+<device id="2" device_type="urn:schemas-micasaverde-com:device:SceneController:1" room="0" id_parent="1" embedded="0" disabled="0" device_file="D_SceneController1.xml" impl_file="" manufacturer="" model="" altid="1" ip="" mac="" time_created="1333627208" category_num="14" subcategory_num="0" name="_Scene Controller" invisible="1" local_udn="uuid:4d494342-5342-5645-0002-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:SceneController1" variable="Scenes" value="" id="0"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="IgnoreRoom" value="1" id="1"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" value="0" id="2"></state>
+</states>
+<ControlURLs>
+<service_2 service="urn:micasaverde-com:serviceId:SceneController1" ControlURL="/upnp/control/dev_2" EventURL="/upnp/event/dev_2" serviceType="urn:schemas-micasaverde-com:service:SceneController:1"></service_2>
+<service_3 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_3" EventURL="/upnp/event/dev_3" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_3>
+</ControlURLs>
+</device>
+<device id="4" device_type="urn:schemas-upnp-org:device:BinaryLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" manufacturer="" model="" altid="8" ip="" mac="" time_created="1337633410" category_num="3" subcategory_num="0" room="2" name="NappaliEbedlo" local_udn="uuid:4d494342-5342-5645-0004-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="211,156,0,4,16,1,L,R,B,RS,|32,37,39,112,114,117,119,133,134,135,142," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="277,4096,1" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,3,22,1,6" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="20,25,27,70,72,75,77,85,86,87,8e," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="InitialName" value="Unnamed" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1337633603" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1337633426" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="9"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="10" value="1,9,10,11,12,13,14,15,16,17,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="1337633423" id="11"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="3" id="12"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="161822"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="14" value="0"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Target" value="0" id="15"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredName" value="NappaliEbedlo" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="17" value="1374795744"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="18" value="366"></state>
+</states>
+<ControlURLs>
+<service_4 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_4" EventURL="/upnp/event/dev_4" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_4>
+<service_5 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_5" EventURL="/upnp/event/dev_5" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_5>
+<service_6 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_6" EventURL="/upnp/event/dev_6" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_6>
+</ControlURLs>
+</device>
+<device id="5" device_type="urn:schemas-upnp-org:device:BinaryLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" model="" altid="9" ip="" mac="" time_created="1337633438" category_num="3" subcategory_num="0" manufacturer="Duewi" room="2" name="NappaliKanape" local_udn="uuid:4d494342-5342-5645-0005-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="210,156,0,4,16,1,L,R,B,RS,|37,39,114,117,130,133,134,135," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="100,8193,0" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,2,51,1,0" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,27,72,75,82,85,86,87," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1337633652" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1337633453" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="9" value="1,8,10,11,12,13,14,16,17,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="1337633452" id="10"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="1" id="11"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="12" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="160747"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Target" value="0" id="14"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="15" value="1374795774"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="16" value="1431"></state>
+</states>
+<ControlURLs>
+<service_7 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_7" EventURL="/upnp/event/dev_7" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_7>
+<service_8 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_8" EventURL="/upnp/event/dev_8" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_8>
+<service_9 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_9" EventURL="/upnp/event/dev_9" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_9>
+</ControlURLs>
+</device>
+<device id="6" device_type="urn:schemas-upnp-org:device:BinaryLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" manufacturer="" model="" altid="10" ip="" mac="" time_created="1337633469" category_num="3" subcategory_num="0" room="3" name="Konyha" local_udn="uuid:4d494342-5342-5645-0006-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="211,156,0,4,16,1,L,R,B,RS,|32,37,39,112,114,117,119,133,134,135,142," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="277,4096,1" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,3,22,1,6" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="20,25,27,70,72,75,77,85,86,87,8e," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="InitialName" value="Unnamed" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1337633710" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1337633485" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="9"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="10" value="1,8,9,11,12,13,14,15,16,17,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="1337633484" id="11"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="3" id="12"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="13" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="14" value="161826"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Target" value="0" id="15"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredName" value="Konyha" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="17" value="1374795804"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="18" value="341"></state>
+</states>
+<ControlURLs>
+<service_10 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_10" EventURL="/upnp/event/dev_10" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_10>
+<service_11 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_11" EventURL="/upnp/event/dev_11" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_11>
+<service_12 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_12" EventURL="/upnp/event/dev_12" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_12>
+</ControlURLs>
+</device>
+<device id="7" device_type="urn:schemas-upnp-org:device:BinaryLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" model="" altid="11" ip="" mac="" time_created="1337633498" category_num="3" subcategory_num="0" manufacturer="Duewi" room="4" name="Dolgozo" local_udn="uuid:4d494342-5342-5645-0007-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="210,156,0,4,16,1,L,R,B,RS,|37,39,114,117,130,133,134,135," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="100,8193,0" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,2,51,1,0" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,27,72,75,82,85,86,87," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1337633747" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1337633512" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="9" value="1,8,9,10,12,13,14,15,16,17,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="1337633512" id="10"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="1" id="11"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="12" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="161891"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Target" value="0" id="14"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="15" value="1374795834"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="16" value="270"></state>
+</states>
+<ControlURLs>
+<service_13 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_13" EventURL="/upnp/event/dev_13" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_13>
+<service_14 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_14" EventURL="/upnp/event/dev_14" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_14>
+<service_15 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_15" EventURL="/upnp/event/dev_15" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_15>
+</ControlURLs>
+</device>
+<device id="8" device_type="urn:schemas-upnp-org:device:BinaryLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" model="" altid="12" ip="" mac="" time_created="1337633528" category_num="3" subcategory_num="0" manufacturer="Duewi" room="1" name="Eloszoba" local_udn="uuid:4d494342-5342-5645-0008-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="210,156,0,4,16,1,L,R,B,RS,|37,39,114,117,130,133,134,135," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="100,8193,0" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,2,51,1,0" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,27,72,75,82,85,86,87," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1337633711" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1337633544" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="9" value="1,8,9,10,11,13,14,15,16,17,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="1337633544" id="10"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="1" id="11"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="12" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="161546"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Target" value="0" id="14"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="15" value="1374795864"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="16" value="599"></state>
+</states>
+<ControlURLs>
+<service_16 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_16" EventURL="/upnp/event/dev_16" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_16>
+<service_17 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_17" EventURL="/upnp/event/dev_17" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_17>
+<service_18 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_18" EventURL="/upnp/event/dev_18" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_18>
+</ControlURLs>
+</device>
+<device id="11" device_type="urn:schemas-upnp-org:device:BinaryLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" model="" altid="14" ip="" mac="" time_created="1359807394" category_num="3" subcategory_num="0" room="7" name="Fürdőnagy" manufacturer="ACT - Advanced Control Technologies" local_udn="uuid:4d494342-5342-5645-000b-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="201,12,0,4,16,1,L,R,RS,|37,39,112,114,115,133,134," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="1,21069,13104" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,1,99,1,10" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,27,70,72,73,85,86," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="2,12" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1361863151" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1359807604" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="9" value="1,8,9,10,11,12,15,16,17,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="1361863149" id="10"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="4" id="11"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="12" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="44348"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="14" value="1374831634"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Target" value="1" id="15"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VariablesSet" value="" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationSet" value="2,12" id="17"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationGet" value="2,12,;" id="18"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="19" value="732"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MultiChEndpoint" value="" id="20"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MultiChCapabilities" value="" id="21"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredName" value="" id="22"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredVariable" value="" id="23"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MeterType" value="" id="24"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MeterScale" value="" id="25"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="SetPointInfo" value="" id="26"></state>
+</states>
+<ControlURLs>
+<service_19 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_19" EventURL="/upnp/event/dev_19" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_19>
+<service_20 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_20" EventURL="/upnp/event/dev_20" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_20>
+<service_21 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_21" EventURL="/upnp/event/dev_21" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_21>
+</ControlURLs>
+</device>
+<device id="12" device_type="urn:schemas-upnp-org:device:DimmableLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_DimmableLight1.xml" impl_file="" manufacturer="" model="" altid="15" ip="" mac="" time_created="1359807684" category_num="2" subcategory_num="0" room="7" name="Fürdőkád" local_udn="uuid:4d494342-5342-5645-000c-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="201,4,0,3,17,0,L,R,|38,39,117," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="26,27,75," id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="CommFailure" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1359808600" id="4"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1359807874" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="7" value="1,8,10,11,12,14,16,17,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="0" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="0" id="9"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="10" value="0"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelStatus" id="11" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="12" value="44805"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelTarget" value="100" id="13"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="14" value="1374796074"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationSet" value="" id="15"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="16" value="69"></state>
+</states>
+<ControlURLs>
+<service_22 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_22" EventURL="/upnp/event/dev_22" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_22>
+<service_23 service="urn:upnp-org:serviceId:Dimming1" ControlURL="/upnp/control/dev_23" EventURL="/upnp/event/dev_23" serviceType="urn:schemas-upnp-org:service:Dimming:1"></service_23>
+<service_24 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_24" EventURL="/upnp/event/dev_24" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_24>
+<service_25 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_25" EventURL="/upnp/event/dev_25" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_25>
+</ControlURLs>
+</device>
+<device id="13" device_type="urn:schemas-upnp-org:device:BinaryLight:1" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" model="" altid="16" ip="" mac="" time_created="1359807699" category_num="3" subcategory_num="0" manufacturer="ACT - Advanced Control Technologies" room="6" name="Háló" local_udn="uuid:4d494342-5342-5645-000d-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="201,12,0,4,16,1,L,R,RS,|37,39,112,114,115,133,134," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="1,21069,13104" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,1,99,1,10" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,27,70,72,73,85,86," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="2,14" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1359808960" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1359807847" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="9" value="1,8,9,10,11,12,14,15,17,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="1359807845" id="10"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="4" id="11"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="12" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="44715"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Target" value="0" id="14"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="15" value="1374796104"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationSet" value="2,14" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationGet" value="2,14,;" id="17"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollNoReply" id="18" value="177"></state>
+</states>
+<ControlURLs>
+<service_26 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_26" EventURL="/upnp/event/dev_26" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_26>
+<service_27 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_27" EventURL="/upnp/event/dev_27" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_27>
+<service_28 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_28" EventURL="/upnp/event/dev_28" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_28>
+</ControlURLs>
+</device>
+<device id="14" device_type="urn:schemas-micasaverde-com:device:WindowCovering:1" id_parent="1" embedded="0" disabled="0" device_file="D_WindowCovering1.xml" impl_file="" model="" altid="17" ip="" mac="" time_created="1359807727" category_num="8" subcategory_num="0" manufacturer="Duewi" room="6" name="Hálóredőny" local_udn="uuid:4d494342-5342-5645-000e-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="210,156,0,4,17,3,L,R,B,RS,|37,38:1,39,112,114,117,130,133,134,135," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="100,16385,0" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,2,51,1,0" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,26,27,70,72,75,82,85,86,87," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1366318777" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1359807848" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" id="8" value="1,8,9,10,11,12,14,15,16,21,22,"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="0" id="9"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="1" id="10"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="11" value="1"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelStatus" id="12" value="73"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="44872"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="14" value="1374796134"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelTarget" id="15" value="100"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VariablesSet" value="0,2h,1e1e" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VariablesGet" value="0,7710," id="17"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredVariable" value="0,2h,1e1e" id="18"></state>
+<state id="23" service="urn:upnp-org:serviceId:WindowCovering1" variable="Target" value="1"></state>
+</states>
+<ControlURLs>
+<service_29 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_29" EventURL="/upnp/event/dev_29" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_29>
+<service_30 service="urn:upnp-org:serviceId:Dimming1" ControlURL="/upnp/control/dev_30" EventURL="/upnp/event/dev_30" serviceType="urn:schemas-upnp-org:service:Dimming:1"></service_30>
+<service_31 service="urn:upnp-org:serviceId:WindowCovering1" ControlURL="/upnp/control/dev_31" EventURL="/upnp/event/dev_31" serviceType="urn:schemas-upnp-org:service:WindowCovering:1"></service_31>
+<service_32 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_32" EventURL="/upnp/event/dev_32" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_32>
+<service_33 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_33" EventURL="/upnp/event/dev_33" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_33>
+</ControlURLs>
+</device>
+<device id="15" device_type="urn:schemas-micasaverde-com:device:WindowCovering:1" id_parent="1" embedded="0" disabled="0" device_file="D_WindowCovering1.xml" impl_file="" model="" altid="21" ip="" mac="" time_created="1366316732" category_num="8" subcategory_num="0" name="DolgRedony" room="4" manufacturer="Duewi" local_udn="uuid:4d494342-5342-5645-000f-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="210,156,0,4,17,3,L,R,B,RS,|37,38:1,39,112,114,117,130,133,134,135," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="100,16385,0" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,2,51,1,0" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,26,27,70,72,75,82,85,86,87," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1366318648" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1366316792" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" value="1,8,9,10,11,12,14,16,17,22," id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="0" id="9"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="1" id="10"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="11" value="1"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelStatus" id="12" value="63"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="25470"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="14" value="1374790644"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VariablesSet" value="0,2h,1e1e" id="15"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="CommFailure" value="1" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VariablesGet" value="0,7710," id="17"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MultiChEndpoint" value="" id="18"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MultiChCapabilities" value="" id="19"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredName" value="" id="20"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredVariable" value="0,2h,1e1e" id="21"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredAssoc" value="" id="22"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MeterType" value="" id="23"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="MeterScale" value="" id="24"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="SetPointInfo" value="" id="25"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelTarget" value="0" id="26"></state>
+<state service="urn:upnp-org:serviceId:WindowCovering1" variable="Target" value="0" id="27"></state>
+</states>
+<ControlURLs>
+<service_34 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_34" EventURL="/upnp/event/dev_34" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_34>
+<service_35 service="urn:upnp-org:serviceId:Dimming1" ControlURL="/upnp/control/dev_35" EventURL="/upnp/event/dev_35" serviceType="urn:schemas-upnp-org:service:Dimming:1"></service_35>
+<service_36 service="urn:upnp-org:serviceId:WindowCovering1" ControlURL="/upnp/control/dev_36" EventURL="/upnp/event/dev_36" serviceType="urn:schemas-upnp-org:service:WindowCovering:1"></service_36>
+<service_37 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_37" EventURL="/upnp/event/dev_37" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_37>
+<service_38 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_38" EventURL="/upnp/event/dev_38" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_38>
+</ControlURLs>
+</device>
+<device id="16" device_type="urn:schemas-micasaverde-com:device:WindowCovering:1" id_parent="1" embedded="0" disabled="0" device_file="D_WindowCovering1.xml" impl_file="" model="" altid="22" ip="" mac="" time_created="1366316800" category_num="8" subcategory_num="0" room="5" manufacturer="Duewi" name="LilóRedőny" local_udn="uuid:4d494342-5342-5645-0010-000001cb5211">
+<states>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Capabilities" value="210,156,0,4,17,3,L,R,B,RS,|37,38:1,39,112,114,117,130,133,134,135," id="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ManufacturerInfo" value="100,16385,0" id="1"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VersionInfo" value="6,2,51,1,0" id="2"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="1" id="3"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="NodeInfo" value="25,26,27,70,72,75,82,85,86,87," id="4"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="LastUpdate" value="1366318777" id="5"></state>
+<state service="urn:micasaverde-com:serviceId:HaDevice1" variable="FirstConfigured" value="1366316846" id="6"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollSettings" value="60" id="7"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="Neighbors" value="1,8,9,10,11,12,14,15,16,17,21," id="8"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastReset" value="0" id="9"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="AssociationNum" value="1" id="10"></state>
+<state service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" id="11" value="0"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelStatus" id="12" value="0"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="PollOk" id="13" value="25469"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="LastRouteUpdate" id="14" value="1374832534"></state>
+<state service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelTarget" value="0" id="15"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VariablesSet" value="0,2h,1e1e" id="16"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="VariablesGet" value="0,7710," id="17"></state>
+<state service="urn:micasaverde-com:serviceId:ZWaveDevice1" variable="ConfiguredVariable" value="0,2h,1e1e" id="18"></state>
+</states>
+<ControlURLs>
+<service_39 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_39" EventURL="/upnp/event/dev_39" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_39>
+<service_40 service="urn:upnp-org:serviceId:Dimming1" ControlURL="/upnp/control/dev_40" EventURL="/upnp/event/dev_40" serviceType="urn:schemas-upnp-org:service:Dimming:1"></service_40>
+<service_41 service="urn:upnp-org:serviceId:WindowCovering1" ControlURL="/upnp/control/dev_41" EventURL="/upnp/event/dev_41" serviceType="urn:schemas-upnp-org:service:WindowCovering:1"></service_41>
+<service_42 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_42" EventURL="/upnp/event/dev_42" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_42>
+<service_43 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_43" EventURL="/upnp/event/dev_43" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_43>
+</ControlURLs>
+</device>
+<device id="17" device_type="urn:schemas-upnp-org:device:BinaryLight:1" room="0" id_parent="1" embedded="0" disabled="0" device_file="D_BinaryLight1.xml" impl_file="" manufacturer="" model="" altid="13" ip="" mac="" time_created="1366321441" category_num="3" subcategory_num="0" name="_Appliance Module" local_udn="uuid:4d494342-5342-5645-0011-000001cb5211">
+<states>
+<state id="1" service="urn:micasaverde-com:serviceId:HaDevice1" variable="Configured" value="-3"></state>
+<state id="5" service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" value="0"></state>
+</states>
+<ControlURLs>
+<service_44 service="urn:upnp-org:serviceId:SwitchPower1" ControlURL="/upnp/control/dev_44" EventURL="/upnp/event/dev_44" serviceType="urn:schemas-upnp-org:service:SwitchPower:1"></service_44>
+<service_45 service="urn:micasaverde-com:serviceId:EnergyMetering1" ControlURL="/upnp/control/dev_45" EventURL="/upnp/event/dev_45" serviceType="urn:schemas-micasaverde-com:service:EnergyMetering:1"></service_45>
+<service_46 service="urn:micasaverde-com:serviceId:HaDevice1" ControlURL="/upnp/control/dev_46" EventURL="/upnp/event/dev_46" serviceType="urn:schemas-micasaverde-com:service:HaDevice:1"></service_46>
+</ControlURLs>
+</device>
+</devices>
+<scenes></scenes>
+<sections>
+<section id="1" name="My Home"></section>
+</sections>
+<ExtraLuaFiles></ExtraLuaFiles>
+<InstalledPlugins2></InstalledPlugins2>
+<ip_requests>
+<ip_request mac="00:40:45:29:85:2A" ip="192.168.81.210" date="1337625763"></ip_request>
+</ip_requests>
+<rooms>
+<room posx="0" posy="0" width="4" height="4" id="1" section="1" name="Előszoba"></room>
+<room posx="0" posy="0" width="4" height="4" name="Nappali" id="2" section="1"></room>
+<room posx="0" posy="0" width="4" height="4" name="Konyha" id="3" section="1"></room>
+<room posx="0" posy="0" width="4" height="4" id="4" section="1" name="Dolgozó"></room>
+<room posx="0" posy="0" width="4" height="4" id="5" section="1" name="Liló"></room>
+<room posx="0" posy="0" width="4" height="4" name="Hálószoba" id="6" section="1"></room>
+<room posx="0" posy="0" width="4" height="4" name="Fürdő" id="7" section="1"></room>
+</rooms>
+<InstalledPlugins></InstalledPlugins>
+<users>
+<user id="151536" Name="r1tchhome" Level="1"></user>
+</users>
+<static_data>
+<static_dat flashicon="icons/SceneController.png" imgIconBody="" imgIconDimmable="" imgIconTurnable="" imgIconMin="" imgIconMax="" halloIconsDir="pics/hallo" inScene="0" ToggleButton="1" DeviceType="urn:schemas-micasaverde-com:device:SceneController:1" device_type="urn:schemas-micasaverde-com:device:SceneController:1">
+<DisplayStatus></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="lighting_devices"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="flash">
+<Label lang_tag="tabname_control" text="Control"></Label>
+<Control>
+<Contro ControlType="label">
+<Label lang_tag="scenes" text="Scenes"></Label>
+<Display Top="60" Left="50" Width="75" Height="20"></Display>
+</Contro>
+<Contro ControlType="variable">
+<Display Service="urn:micasaverde-com:serviceId:SceneController1" Variable="Scenes" Top="60" Left="145" Width="75" Height="20"></Display>
+</Contro>
+</Control>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="shared.js" Function="simple_device">
+<Label lang_tag="settings" text="Settings"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="shared.js" Function="advanced_device">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="shared.js" Function="device_zwave_options">
+<Label lang_tag="device_options" text="Device Options"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="shared.js" Function="scene_controller">
+<Label lang_tag="scenes" text="Scenes"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="shared.js" Function="device_notifications">
+<Label lang_tag="notifications" text="Notifications"></Label>
+</Tab>
+</Tabs>
+<eventList2>
+<eventList id="1" serviceId="urn:micasaverde-com:serviceId:SceneController1">
+<label lang_tag="a_scene_is_activated" text="A scene is activated"></label>
+<argumentList>
+<argumentLis id="1" dataType="ui2" defaultValue="" name="sl_SceneActivated" comparisson="=">
+<prefix lang_tag="which_scene_number" text="Which scene number"></prefix>
+<suffix></suffix>
+<HumanFriendlyText lang_tag="hft_scene_number_is_activated" text="_DEVICE_NAME_: scene number _ARGUMENT_VALUE_ is activated"></HumanFriendlyText>
+</argumentLis>
+</argumentList>
+</eventList>
+<eventList id="2" serviceId="urn:micasaverde-com:serviceId:SceneController1">
+<label lang_tag="a_scene_is_deactivated" text="A scene is de-activated"></label>
+<argumentList>
+<argumentLis id="1" dataType="ui2" defaultValue="" name="sl_SceneDeactivated" comparisson="=">
+<prefix lang_tag="which_scene_number" text="Which scene number"></prefix>
+<suffix></suffix>
+<HumanFriendlyText lang_tag="hft_scene_number_is_deactivated" text="_DEVICE_NAME_: scene number _ARGUMENT_VALUE_ is deactivated"></HumanFriendlyText>
+</argumentLis>
+</argumentList>
+</eventList>
+<eventList id="3" serviceId="urn:micasaverde-com:serviceId:HaDevice1">
+<label lang_tag="battery_level_goes_below" text="Battery level goes below"></label>
+<argumentList>
+<argumentLis id="1" dataType="i4" name="BatteryLevel" comparisson="&lt;">
+<prefix lang_tag="Level" text="Level"></prefix>
+<suffix lang_tag="percent_sign" text="%"></suffix>
+<HumanFriendlyText lang_tag="hft_battery_level_goes_below" text="Battery level for _DEVICE_NAME_ goes below _ARGUMENT_VALUE_%"></HumanFriendlyText>
+</argumentLis>
+</argumentList>
+</eventList>
+</eventList2>
+</static_dat>
+<static_dat flashicon="icons/Binary_Light.png" imgIconBody="" imgIconDimmable="" imgIconTurnable="" imgIconMin="icons/Binary_Light_0.png" imgIconMax="icons/Binary_Light.png" halloIconsDir="pics/hallo" x="2" y="4" inScene="1" ToggleButton="1" DeviceType="urn:schemas-upnp-org:device:BinaryLight:1" device_type="urn:schemas-upnp-org:device:BinaryLight:1">
+<state_icons state_icon="Binary_Light_100.png"></state_icons>
+<DisplayStatus Service="urn:upnp-org:serviceId:SwitchPower1" Variable="Status" MinValue="0" MaxValue="1"></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="lighting_devices"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="flash">
+<Label lang_tag="tabname_control" text="Control"></Label>
+<ControlGroup>
+<ControlGrou id="1" isSingle="1" scenegroup="1"></ControlGrou>
+<ControlGrou id="2" isSingle="1" scenegroup="1"></ControlGrou>
+</ControlGroup>
+<SceneGroup>
+<SceneGrou id="1" top="2" left="0" x="2" y="1"></SceneGrou>
+</SceneGroup>
+<Control>
+<Contro ControlGroup="2" ControlType="button" top="0" left="1" ControlCode="power_on">
+<Label lang_tag="cmd_on" text="On"></Label>
+<Display Service="urn:upnp-org:serviceId:SwitchPower1" Variable="Status" Value="1" Top="60" Left="145" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:SwitchPower1" Action="SetTarget">
+<Parameters>
+<Parameter Name="newTargetValue" Value="1"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="1" ControlType="button" top="0" left="0" ControlCode="power_off">
+<Label lang_tag="cmd_off" text="Off"></Label>
+<Display Service="urn:upnp-org:serviceId:SwitchPower1" Variable="Status" Value="0" Top="60" Left="50" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:SwitchPower1" Action="SetTarget">
+<Parameters>
+<Parameter Name="newTargetValue" Value="0"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+</Control>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="shared.js" Function="simple_device">
+<Label lang_tag="settings" text="Settings"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="shared.js" Function="advanced_device">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="shared.js" Function="device_zwave_options">
+<Label lang_tag="device_options" text="Device Options"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="shared.js" Function="device_logs">
+<Label lang_tag="logs" text="Logs"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="shared.js" Function="device_notifications">
+<Label lang_tag="notifications" text="Notifications"></Label>
+</Tab>
+</Tabs>
+<sceneList>
+<group_1>
+<cmd_1 label="ON" serviceId="urn:upnp-org:serviceId:SwitchPower1" action="SetTarget">
+<arguments newTargetValue="1"></arguments>
+<display service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" value="1"></display>
+</cmd_1>
+<cmd_2 label="OFF" serviceId="urn:upnp-org:serviceId:SwitchPower1" action="SetTarget">
+<arguments newTargetValue="0"></arguments>
+<display service="urn:upnp-org:serviceId:SwitchPower1" variable="Status" value="0"></display>
+</cmd_2>
+</group_1>
+</sceneList>
+<eventList2>
+<eventList id="1" serviceId="urn:upnp-org:serviceId:SwitchPower1">
+<label lang_tag="a_device_is_turned_on_off" text="A device is turned on or off"></label>
+<argumentList>
+<argumentLis id="1" dataType="boolean" defaultValue="1" name="Status" comparisson="=">
+<allowedValueList>
+<allowedValueLis Off="0">
+<HumanFriendlyText lang_tag="hft_device_turned_off" text="_DEVICE_NAME_ is turned off"></HumanFriendlyText>
+</allowedValueLis>
+<allowedValueLis On="1">
+<HumanFriendlyText lang_tag="hft_device_turned_on" text="_DEVICE_NAME_ is turned on"></HumanFriendlyText>
+</allowedValueLis>
+</allowedValueList>
+<prefix lang_tag="which_mode" text="Which mode"></prefix>
+<suffix></suffix>
+</argumentLis>
+</argumentList>
+</eventList>
+</eventList2>
+</static_dat>
+<static_dat flashicon="icons/Dimmable_Light.swf" imgIconBody="pics/devices/Dimmable_Light_BODY.png" imgIconDimmable="pics/devices/Dimmable_Light_SWITCH.png" imgIconTurnable="" imgIconMin="icons/Dimmable_Light_0.png" imgIconMax="icons/Dimmable_Light_100.png" halloIconsDir="pics/hallo" x="2" y="4" iconText="1" inScene="1" ToggleButton="1" DeviceType="urn:schemas-upnp-org:device:DimmableLight:1" device_type="urn:schemas-upnp-org:device:DimmableLight:1">
+<state_icons state_icon="Dimmable_Light_100.png"></state_icons>
+<DisplayStatus Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" MinValue="0" MaxValue="100"></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="lighting_devices"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="flash">
+<Label lang_tag="tabname_control" text="Control"></Label>
+<ControlGroup>
+<ControlGrou id="1" isSingle="1" scenegroup="1"></ControlGrou>
+<ControlGrou id="2" isSingle="1" scenegroup="1"></ControlGrou>
+<ControlGrou id="3" isSingle="1" scenegroup="1"></ControlGrou>
+</ControlGroup>
+<SceneGroup>
+<SceneGrou id="1" top="0.5" left="0" x="2" y="2.5"></SceneGrou>
+</SceneGroup>
+<Control>
+<Contro ControlGroup="3" ControlType="slider" top="0" left="0" ControlCode="dim">
+<Label lang_tag="cmd_on" text="On"></Label>
+<Display Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" MinValue="0" MaxValue="100" Top="100" Left="50" Width="100" Height="25" ID="newLoadlevelTarget"></Display>
+<Command Service="urn:upnp-org:serviceId:Dimming1" Action="SetLoadLevelTarget">
+<Parameters>
+<Parameter Name="newLoadlevelTarget" ID="newLoadlevelTarget"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="1" ControlType="button" top="1.5" left="0" ControlCode="power_off">
+<Label lang_tag="cmd_off" text="Off"></Label>
+<Display Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" Value="0" Top="50" Left="50" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:Dimming1" Action="SetLoadLevelTarget">
+<Parameters>
+<Parameter Name="newLoadlevelTarget" Value="0"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="2" ControlType="button" top="1.5" left="1" ControlCode="power_on">
+<Label lang_tag="cmd_on" text="On"></Label>
+<Display Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" Value="100" Top="50" Left="450" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:Dimming1" Action="SetLoadLevelTarget">
+<Parameters>
+<Parameter Name="newLoadlevelTarget" Value="100"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+</Control>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="shared.js" Function="simple_device">
+<Label lang_tag="settings" text="Settings"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="shared.js" Function="advanced_device">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="shared.js" Function="device_zwave_options">
+<Label lang_tag="device_options" text="Device Options"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="shared.js" Function="device_logs">
+<Label lang_tag="logs" text="Logs"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="shared.js" Function="device_notifications">
+<Label lang_tag="notifications" text="Notifications"></Label>
+</Tab>
+</Tabs>
+<sceneList>
+<group_1>
+<cmd_1 label="ON" serviceId="urn:upnp-org:serviceId:Dimming1" action="SetLoadLevelTarget">
+<arguments newLoadlevelTarget="100"></arguments>
+<display service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelStatus" value="100"></display>
+</cmd_1>
+<cmd_2 label="OFF" serviceId="urn:upnp-org:serviceId:Dimming1" action="SetLoadLevelTarget">
+<arguments newLoadlevelTarget="0"></arguments>
+<display service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelStatus" value="0"></display>
+</cmd_2>
+<cmd_3 label="Set level" serviceId="urn:upnp-org:serviceId:Dimming1" action="SetLoadLevelTarget">
+<argumentList>
+<argument_1 dataType="ui1" defaultValue="" prefix="to" suffix="%" name="newLoadlevelTarget">
+<allowedValueRange minimum="0" maximum="100"></allowedValueRange>
+</argument_1>
+</argumentList>
+<display service="urn:upnp-org:serviceId:Dimming1" variable="LoadLevelStatus"></display>
+</cmd_3>
+</group_1>
+</sceneList>
+<eventList2>
+<eventList id="1" serviceId="urn:upnp-org:serviceId:SwitchPower1">
+<label lang_tag="a_device_is_turned_on_off" text="A device is turned on or off"></label>
+<argumentList>
+<argumentLis id="1" dataType="boolean" defaultValue="1" name="Status" comparisson="=">
+<allowedValueList>
+<allowedValueLis Off="0">
+<HumanFriendlyText lang_tag="hft_device_turned_off" text="_DEVICE_NAME_ is turned off"></HumanFriendlyText>
+</allowedValueLis>
+<allowedValueLis On="1">
+<HumanFriendlyText lang_tag="hft_device_turned_on" text="_DEVICE_NAME_ is turned on"></HumanFriendlyText>
+</allowedValueLis>
+</allowedValueList>
+<prefix lang_tag="which_mode" text="Which mode"></prefix>
+<suffix></suffix>
+</argumentLis>
+</argumentList>
+</eventList>
+</eventList2>
+</static_dat>
+<static_dat flashicon="icons/Window_Covering.swf" imgIconBody="" imgIconDimmable="" imgIconTurnable="" imgIconMin="" imgIconMax="" halloIconsDir="pics/hallo" x="3" y="4" inScene="1" iconText="1" DeviceType="urn:schemas-micasaverde-com:device:WindowCovering:1" device_type="urn:schemas-micasaverde-com:device:WindowCovering:1">
+<DisplayStatus Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" MinValue="0" MaxValue="100"></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="window_coverings"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="flash">
+<Label lang_tag="tabname_control" text="Control"></Label>
+<ControlGroup>
+<ControlGrou id="1" scenegroup="1"></ControlGrou>
+<ControlGrou id="2" isSingle="1" scenegroup="2"></ControlGrou>
+</ControlGroup>
+<SceneGroup>
+<SceneGrou id="1" top="0.5" left="0" x="1" y="3"></SceneGrou>
+<SceneGrou id="2" top="0.5" left="1" x="2" y="2.5"></SceneGrou>
+</SceneGroup>
+<Control>
+<Contro ControlGroup="2" ControlType="slider">
+<Label lang_tag="cmd_on" text="On"></Label>
+<Display Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" MinValue="0" MaxValue="100" Top="100" Left="50" Width="100" Height="25" ID="newLoadlevelTarget"></Display>
+<Command Service="urn:upnp-org:serviceId:Dimming1" Action="SetLoadLevelTarget">
+<Parameters>
+<Parameter Name="newLoadlevelTarget" ID="newLoadlevelTarget"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="2" ControlType="button" top="1.5" left="1">
+<Label lang_tag="cmd_open" text="Open"></Label>
+<Display Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" Value="100" Top="60" Left="135" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:Dimming1" Action="SetLoadLevelTarget">
+<Parameters>
+<Parameter Name="newLoadlevelTarget" Value="100"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="2" ControlType="button" top="1.5" left="0">
+<Label lang_tag="cmd_close" text="Close"></Label>
+<Display Service="urn:upnp-org:serviceId:Dimming1" Variable="LoadLevelStatus" Value="0" Top="60" Left="50" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:Dimming1" Action="SetLoadLevelTarget">
+<Parameters>
+<Parameter Name="newLoadlevelTarget" Value="0"></Parameter>
+</Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="1" ControlType="button" top="0" left="0">
+<Label lang_tag="cmd_up" text="Up"></Label>
+<Display Top="60" Left="230" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:WindowCovering1" Action="Up">
+<Parameters></Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="1" ControlType="button" top="2" left="0">
+<Label lang_tag="cmd_down" text="Down"></Label>
+<Display Top="60" Left="315" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:WindowCovering1" Action="Down">
+<Parameters></Parameters>
+</Command>
+</Contro>
+<Contro ControlGroup="1" ControlType="button" top="1" left="0">
+<Label lang_tag="cmd_stop" text="Stop"></Label>
+<Display Top="60" Left="400" Width="75" Height="20"></Display>
+<Command Service="urn:upnp-org:serviceId:WindowCovering1" Action="Stop">
+<Parameters></Parameters>
+</Command>
+</Contro>
+</Control>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="shared.js" Function="simple_device">
+<Label lang_tag="settings" text="Settings"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="shared.js" Function="advanced_device">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="shared.js" Function="device_zwave_options">
+<Label lang_tag="device_options" text="Device Options"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="shared.js" Function="device_logs">
+<Label lang_tag="logs" text="Logs"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="shared.js" Function="device_notifications">
+<Label lang_tag="notifications" text="Notifications"></Label>
+</Tab>
+</Tabs>
+<sceneList>
+<group_1>
+<cmd_1 label="OPEN" serviceId="urn:upnp-org:serviceId:SwitchPower1" action="SetTarget">
+<arguments newTargetValue="1"></arguments>
+</cmd_1>
+<cmd_2 label="CLOSE" serviceId="urn:upnp-org:serviceId:SwitchPower1" action="SetTarget">
+<arguments newTargetValue="0"></arguments>
+</cmd_2>
+<cmd_3 label="Set level" serviceId="urn:upnp-org:serviceId:Dimming1" action="SetLoadLevelTarget">
+<argumentList>
+<argument_1 dataType="ui1" defaultValue="" prefix="to" suffix="%" name="newLoadlevelTarget">
+<allowedValueRange minimum="0" maximum="100"></allowedValueRange>
+</argument_1>
+</argumentList>
+</cmd_3>
+<cmd_4 label="Up" serviceId="urn:upnp-org:serviceId:WindowCovering1" action="Up"></cmd_4>
+<cmd_5 label="Down" serviceId="urn:upnp-org:serviceId:WindowCovering1" action="Down"></cmd_5>
+<cmd_6 label="Stop" serviceId="urn:upnp-org:serviceId:WindowCovering1" action="Stop"></cmd_6>
+</group_1>
+</sceneList>
+<eventList2>
+<eventList id="1" serviceId="urn:upnp-org:serviceId:SwitchPower1">
+<label lang_tag="a_device_is_turned_on_off" text="A device is turned on or off"></label>
+<argumentList>
+<argumentLis id="1" dataType="boolean" defaultValue="1" name="Status" comparisson="=">
+<allowedValueList>
+<allowedValueLis Off="0">
+<HumanFriendlyText lang_tag="hft_device_turned_off" text="_DEVICE_NAME_ is turned off"></HumanFriendlyText>
+</allowedValueLis>
+<allowedValueLis On="1">
+<HumanFriendlyText lang_tag="hft_device_turned_on" text="_DEVICE_NAME_ is turned on"></HumanFriendlyText>
+</allowedValueLis>
+</allowedValueList>
+<prefix lang_tag="which_mode" text="Which mode"></prefix>
+<suffix></suffix>
+</argumentLis>
+</argumentList>
+</eventList>
+</eventList2>
+</static_dat>
+<static_dat flashicon="icons/devices.swf" imgIconBody="" imgIconDimmable="" imgIconTurnable="" imgIconMin="" imgIconMax="" halloIconsDir="pics/hallo" DeviceType="generic_device">
+<DisplayStatus></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="devices"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="flash">
+<Label lang_tag="tabname_control" text="Control"></Label>
+<Control>
+<Contro ControlType="label">
+<Label lang_tag="device_settings_page" text="Device settings"></Label>
+<Display Top="50" Left="50" Width="120" Height="20"></Display>
+</Contro>
+</Control>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="shared.js" Function="simple_device">
+<Label lang_tag="settings" text="Settings"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="shared.js" Function="advanced_device">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="shared.js" Function="device_zwave_options">
+<Label lang_tag="device_options" text="Device Options"></Label>
+</Tab>
+</Tabs>
+</static_dat>
+<static_dat flashicon="icons/plugins.swf" imgicon="icons/plugins.png" plugin_id="0">
+<DisplayStatus></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="plugins"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="plugins.js" Function="plugin_info">
+<Label lang_tag="plugin_control" text="Plugin control"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="plugins.js" Function="plugin_reviews">
+<Label lang_tag="reviews" text="Reviews"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="plugins.js" Function="plugin_instructions">
+<Label lang_tag="help" text="Help"></Label>
+</Tab>
+</Tabs>
+</static_dat>
+<static_dat flashicon="icons/plugins.swf" imgicon="icons/plugins.png" plugin_id="-1">
+<DisplayStatus></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="plugins"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="plugins.js" Function="plugin_info">
+<Label lang_tag="plugin_control" text="Plugin control"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="plugins.js" Function="plugin_reviews">
+<Label lang_tag="reviews" text="Reviews"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="plugins.js" Function="add_plugin_review">
+<Label lang_tag="add_review" text="Add review"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="plugins.js" Function="plugin_instructions">
+<Label lang_tag="help" text="Help"></Label>
+</Tab>
+</Tabs>
+</static_dat>
+</static_data>
+<overview_tabs>
+<overview_tab content_function="get_overview_security" visible="1" menu_trigger="security">
+<Label lang_tag="lang_overview_security" text="Security"></Label>
+</overview_tab>
+<overview_tab content_function="get_overview_cameras" visible="1" menu_trigger="cameras">
+<Label lang_tag="lang_overview_cameras" text="Cameras"></Label>
+</overview_tab>
+<overview_tab content_function="get_overview_lights" visible="1" menu_trigger="lights">
+<Label lang_tag="lang_overview_lights" text="Lights"></Label>
+</overview_tab>
+<overview_tab content_function="get_overview_climate" visible="1" menu_trigger="climate_security">
+<Label lang_tag="lang_overview_climate" text="Climate"></Label>
+</overview_tab>
+<overview_tab content_function="get_overview_scenes" visible="1" menu_trigger="scenes">
+<Label lang_tag="lang_overview_scenes" text="Scenes"></Label>
+</overview_tab>
+<overview_tab content_function="get_overview_events" visible="1" menu_trigger="my_alerts">
+<Label lang_tag="lang_overview_events" text="Alerts"></Label>
+</overview_tab>
+<overview_tab content_function="get_overview_triggers" visible="1" menu_trigger="triggers">
+<Label lang_tag="lang_overview_triggers" text="Triggers"></Label>
+</overview_tab>
+<overview_tab content_function="get_overview_schedules" visible="1" menu_trigger="schedules">
+<Label lang_tag="lang_overview_schedules" text="Upcoming schedules"></Label>
+</overview_tab>
+</overview_tabs>
+<SetupDevices>
+<SetupDevice DeviceType="room" name="Room" Toolbox="0">
+<Label lang_tag="rooms" text="Rooms"></Label>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="shared.js" Function="room_actions_info">
+<Label lang_tag="room_actions" text="Room actions"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="scenes.js" Function="scenes">
+<Label lang_tag="scenes" text="Scenes"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="shared.js" Function="add_device_form">
+<Label lang_tag="add_device" text="Add device"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="shared.js" Function="new_ir_device">
+<Label lang_tag="add_ir_device" text="Add IR device"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="scenes" name="Scenes" Toolbox="0">
+<Label lang_tag="scenes" text="Scenes"></Label>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="scenes.js" Function="scenes_info">
+<Label lang_tag="scenes" text="Scenes"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="scenes.js" Function="add_scene">
+<Label lang_tag="json_add_scene" text="Add scene"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="scenes.js" Function="view_scenes">
+<Label lang_tag="view_scenes" text="View scenes"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="edit scene" name="Edit scene" flashicon="icons/Scenes.swf" Toolbox="0">
+<Label lang_tag="edit_scene" text="Edit scene"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="scenes"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="scenes.js" Function="control_scene">
+<Label lang_tag="json_edit_scene" text="Edit scene"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="scenes.js" Function="edit_scene">
+<Label lang_tag="json_edit_commands" text="Commands"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="scenes.js" Function="scene_events">
+<Label lang_tag="events" text="Events"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="scenes.js" Function="scene_timers">
+<Label lang_tag="timers" text="Timers"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="scenes.js" Function="add_lua_box" FullScreen="1">
+<Label lang_tag="Luup" text="Luup"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="scenes.js" Function="pick_remote">
+<Label lang_tag="json_remote" text="Remote"></Label>
+</Tab>
+<Tab Position="6" TabType="javascript" ScriptName="scenes.js" Function="advanced_scene_commands">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="intro" name="Quick start" Toolbox="0" Icon="icons/intro.swf">
+<Label lang_tag="quick_start" text="Quick start"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="getting_started"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="intro">
+<Label lang_tag="quick_start" text="Quick start"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="findvera.com" name="Findvera.com" Toolbox="0" Icon="icons/findvera.swf">
+<Label lang_tag="findvera_com" text="_UNIT_VARIABLE_PORTAL_SERVER_"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="mymios"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="remote_access">
+<Label lang_tag="findvera_com" text="_UNIT_VARIABLE_PORTAL_SERVER_"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="users" name="Users" Toolbox="0" Icon="icons/users.swf">
+<Label lang_tag="users" text="Users"></Label>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="users">
+<Label lang_tag="users" text="Users"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="create_user_form">
+<Label lang_tag="json_add_user" text="Add user"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="location" name="Location" Toolbox="0" Icon="icons/location.swf">
+<Label lang_tag="location" text="Location"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="location"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="get_location">
+<Label lang_tag="location" text="Location"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="save" name="Save data" Toolbox="0">
+<Label lang_tag="save_data" text="Save data"></Label>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="save_data">
+<Label lang_tag="save_data" text="Save data"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="zwave" name="Z-Wave" Toolbox="0" Icon="icons/Zwave.swf">
+<Label lang_tag="z_wave_device" text="Z-Wave device"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="zwave_settings"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="zwave.js" Function="zwave_options">
+<Label lang_tag="options" text="Options"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="zwave.js" Function="repair_zwave">
+<Label lang_tag="repair" text="Repair"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="zwave.js" Function="zwave_advanced">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="insteon" name="Insteon" Toolbox="0" Icon="icons/Insteon.swf">
+<Label lang_tag="insteon_device" text="Insteon device"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="INSTEON_Settings"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="insteon.js" Function="insteon_info">
+<Label lang_tag="insteon_device" text="Insteon device"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="insteon.js" Function="insteon_options">
+<Label lang_tag="more_insteon_options" text="More options"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="mios_developers" name="MIOS developers" Toolbox="0" Icon="icons/default_plugins.swf">
+<Label lang_tag="mios_developers" text="Vera developers"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="developers"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="plugins.js" Function="developers">
+<Label lang_tag="mios_developers" text="Vera developers"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="plugins.js" Function="show_test_lua_upnp_code">
+<Label lang_tag="test_luup" text="Test Luup code (Lua)"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="plugins.js" Function="edit_startup_lua">
+<Label lang_tag="edit_statup_lua" text="Edit Startup Lua"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="plugins.js" Function="show_luup_files">
+<Label lang_tag="luup_files" text="Luup files"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="plugins.js" Function="serial_port_configuration">
+<Label lang_tag="json_serial_port_configuration" text="Serial Port configuration"></Label>
+</Tab>
+<Tab Position="6" TabType="javascript" ScriptName="shared.js" Function="create_device_form">
+<Label lang_tag="create_device" text="Create device"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="add device" name="Add device" Toolbox="0">
+<Label lang_tag="add_remove_device" text="Add/remove device"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="supported_hardware"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="shared.js" Function="add_device_by_type">
+<Label lang_tag="add_remove_device" text="Add/remove device"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="notification" name="Notification" Toolbox="0">
+<Label lang_tag="notification_tab" text="Notification"></Label>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="shared.js" Function="information_tab">
+<Label lang_tag="notification_tab" text="Notification"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="mios_marketplace" name="MIOS marketplace" Toolbox="0" Icon="icons/plugins.swf">
+<Label lang_tag="mios_marketplace" text="MiOS Marketplace"></Label>
+<DisplayStatus></DisplayStatus>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="mios_market"></doc_url>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="plugins.js" Function="install_plugins">
+<Label lang_tag="mios_marketplace" text="MiOS Marketplace"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="advanced" name="Advanced" Toolbox="0" Icon="icons/advanced.swf">
+<Label lang_tag="advanced" text="Advanced"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="advanced_settings"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="advanced">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="tech_support">
+<Label lang_tag="tech_support" text="Tech support"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="toolbox.js" Function="net_wifi">
+<Label lang_tag="net_wi_fi" text="Net &amp; Wi-Fi"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="toolbox.js" Function="form_backup">
+<Label lang_tag="json_backup" text="Backup"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="toolbox.js" Function="logs">
+<Label lang_tag="logs" text="Logs"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="toolbox.js" Function="downloads">
+<Label lang_tag="firmware" text="Firmware"></Label>
+</Tab>
+<Tab Position="6" TabType="javascript" ScriptName="toolbox.js" Function="unit_settings">
+<Label lang_tag="unit_settings" text="Unit Settings"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="dashboard" name="Dashboard" Toolbox="1" Icon="icons/menu_dashboard.swf">
+<Label lang_tag="dashboard" text="Dashboard"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="dashboard"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="show_pinned_devices">
+<Label lang_tag="pinned_devices" text="Pinned Devices"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="unit_overview">
+<Label lang_tag="lang_overview" text="Overview"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="dashboard"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="devices" name="Devices" Toolbox="1" Icon="icons/menu_devices.swf">
+<Label lang_tag="devices" text="Devices"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="devices"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="5" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category_exclude">
+<Label lang_tag="all" text="All"></Label>
+<Parameters Parameter="-1"></Parameters>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="lights" text="Lights"></Label>
+<Parameters Parameter="3"></Parameters>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="climate_security" text="Climate"></Label>
+<Parameters Parameter="17"></Parameters>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="sensors" text="Sensors"></Label>
+<Parameters Parameter="16"></Parameters>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="cameras" text="Cameras"></Label>
+<Parameters Parameter="6"></Parameters>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="windows" text="Windows"></Label>
+<Parameters Parameter="8"></Parameters>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="security" text="Security"></Label>
+<Parameters Parameter="23"></Parameters>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="toolbox.js" Function="mobile_phones">
+<Label lang_tag="mobile_phones" text="Mobile Phones"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="toolbox.js" Function="av_devices">
+<Label lang_tag="av_gear" text="AV Gear"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category_exclude">
+<Label lang_tag="other" text="Other"></Label>
+<Parameters Parameter="8"></Parameters>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="shared.js" Function="init_wizard">
+<Label lang_tag="add_devices" text="Add Devices"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="devices"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="scene_devices" name="Devices" Toolbox="2" Icon="icons/menu_devices.swf">
+<Label lang_tag="scene_devices" text="Devices"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="devices"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="5" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category_exclude">
+<Label lang_tag="all" text="All"></Label>
+<Parameters Parameter="-1"></Parameters>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="lights" text="Lights"></Label>
+<Parameters Parameter="3"></Parameters>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="climate_security" text="Climate"></Label>
+<Parameters Parameter="18"></Parameters>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="sensors" text="Sensors"></Label>
+<Parameters Parameter="12"></Parameters>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="cameras" text="Cameras"></Label>
+<Parameters Parameter="6"></Parameters>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="windows" text="Windows"></Label>
+<Parameters Parameter="8"></Parameters>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="locks" text="Locks"></Label>
+<Parameters Parameter="7"></Parameters>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="mobile_phones" text="Mobile Phones"></Label>
+<Parameters></Parameters>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category">
+<Label lang_tag="av_gear" text="AV Gear"></Label>
+<Parameters Parameter="15"></Parameters>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="toolbox.js" Function="sort_devices_by_category_exclude">
+<Label lang_tag="other" text="Other"></Label>
+<Parameters Parameter="8"></Parameters>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="scenes"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="scene_triggers" name="Triggers" Toolbox="2" Icon="icons/menu_devices.swf">
+<Label lang_tag="scene_triggers" text="Triggers"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="devices"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="show_scene_triggers">
+<Label lang_tag="triggers" text="Triggers"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="triggers"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="scene_schedules" name="Schedules" Toolbox="2" Icon="icons/menu_devices.swf">
+<Label lang_tag="scene_schedules" text="Schedules"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="devices"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="show_scene_schedules">
+<Label lang_tag="schedules" text="Schedules"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="schedules"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="scene_luup" name="Luup" Toolbox="2" Icon="icons/menu_devices.swf">
+<Label lang_tag="scene_luup" text="Luup"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="devices"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="show_scene_luup">
+<Label lang_tag="luup" text="Luup"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="luup"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="scene_advanced" name="Advanced" Toolbox="2" Icon="icons/menu_devices.swf">
+<Label lang_tag="scene_advanced" text="Advanced"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="devices"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="show_scene_advanced">
+<Label lang_tag="advanced" text="Advanced"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="scene_advanced"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="automation" name="Automation" Toolbox="1" Icon="icons/menu_automation.swf">
+<Label lang_tag="automation" text="Automation"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="automation"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="show_scenes">
+<Label lang_tag="scenes" text="Scenes"></Label>
+<Parameters Parameter="all"></Parameters>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="show_scenes">
+<Label lang_tag="triggers" text="Triggers"></Label>
+<Parameters Parameter="triggers"></Parameters>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="toolbox.js" Function="show_scenes">
+<Label lang_tag="schedules" text="Schedules"></Label>
+<Parameters Parameter="schedules"></Parameters>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="toolbox.js" Function="bridge.addScene">
+<Label lang_tag="new_scene" text="New scene"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="automation"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="apps" name="Apps" Toolbox="1" Icon="icons/menu_apps.swf">
+<Label lang_tag="apps" text="Apps"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="apps"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="my_installed_apps">
+<Label lang_tag="my_apps" text="My apps"></Label>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="open_marketplace">
+<Label lang_tag="install_apps" text="Install apps"></Label>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="develop_apps">
+<Label lang_tag="develop_apps" text="Develop Apps"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="apps"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="users" name="Users" Toolbox="1" Icon="icons/menu_users.swf">
+<Label lang_tag="lang_account" text="Account"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="users"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="toolbox.js" Function="get_my_contact_info">
+<Label lang_tag="my_contact_info" text="My Contact Info"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="change_password">
+<Label lang_tag="change_password" text="Change password"></Label>
+</Tab>
+<Tab Position="2" TabType="javascript" ScriptName="toolbox.js" Function="get_alerts_canvas">
+<Label lang_tag="my_alerts" text="My Alerts"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="toolbox.js" Function="get_unit_users">
+<Label lang_tag="other_users" text="Other Users"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="toolbox.js" Function="tech_support">
+<Label lang_tag="tech_support" text="Tech support"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="toolbox.js" Function="units_handler">
+<Label lang_tag="lang_my_units" text="Veras"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="users"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="energy" name="Energy" Toolbox="1" Icon="icons/menu_energy.swf">
+<Label lang_tag="energy" text="Energy"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="enrgy"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="J_EchoEnergyManager.js" Function="ergy_light">
+<Label lang_tag="ergy" text="ERGY"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="J_EchoEnergyManager.js" Function="energy_settings">
+<Label lang_tag="ergy_settings" text="ERGY Settings"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="J_EchoEnergyManager.js" Function="ergy_help">
+<Label lang_tag="ergy_help" text="ERGY Help"></Label>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="auth.js" Function="live_usage">
+<Label lang_tag="energy_usage" text="Usage"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="setup" name="Setup" Toolbox="1" Icon="icons/menu_setup.swf">
+<Label lang_tag="setup" text="Setup"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="setup"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="shared.js" Function="room_actions_info">
+<Label lang_tag="rooms" text="Rooms"></Label>
+</Tab>
+<Tab Position="1" TabType="javascript" ScriptName="toolbox.js" Function="get_location">
+<Label lang_tag="location" text="Location"></Label>
+</Tab>
+<Tab Position="3" TabType="javascript" ScriptName="toolbox.js" Function="net_wifi">
+<Label lang_tag="net_and_wifi" text="Net &amp; Wi-fi"></Label>
+</Tab>
+<Tab Position="4" TabType="javascript" ScriptName="toolbox.js" Function="form_backup">
+<Label lang_tag="backup" text="Backup"></Label>
+</Tab>
+<Tab Position="5" TabType="javascript" ScriptName="toolbox.js" Function="logs">
+<Label lang_tag="logs" text="Logs"></Label>
+</Tab>
+<Tab Position="6" TabType="javascript" ScriptName="toolbox.js" Function="zwave_settings">
+<Label lang_tag="z_wave_settings" text="Z-Wave Settings"></Label>
+</Tab>
+<Tab Position="7" TabType="javascript" ScriptName="toolbox.js" Function="insteon_settings">
+<Label lang_tag="insteon_settings" text="Insteon Settings"></Label>
+</Tab>
+<Tab Position="8" TabType="javascript" ScriptName="toolbox.js" Function="downloads">
+<Label lang_tag="firmware" text="Firmware"></Label>
+</Tab>
+<Tab Position="9" TabType="javascript" ScriptName="toolbox.js" Function="get_unit_settings">
+<Label lang_tag="unit_settings" text="Unit Settings"></Label>
+</Tab>
+</Tabs>
+<help_url Function="help">
+<Parameters Parameter="setup"></Parameters>
+</help_url>
+</SetupDevice>
+<SetupDevice DeviceType="unit_settings" name="Unit settings" Toolbox="0" Icon="icons/default_plugins.swf">
+<Label lang_tag="unit_settings" text="Unit Settings"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="unit_settings"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="plugins.js" Function="rename_unit">
+<Label lang_tag="rename_unit" text="Rename unit"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+<SetupDevice DeviceType="my_contact_info" name="My Contact Info" Toolbox="0" Icon="icons/default_plugins.swf">
+<Label lang_tag="contact_information" text="Contact Information"></Label>
+<doc_url doc_language="1" doc_manual="1" doc_version="1" doc_platform="0" doc_page="users"></doc_url>
+<DisplayStatus></DisplayStatus>
+<Tabs>
+<Tab Position="0" TabType="javascript" ScriptName="auth.js" Function="get_my_contact_info_email">
+<Label lang_tag="lang_email_settings" text="Email settings"></Label>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="auth.js" Function="get_my_contact_info_phone">
+<Label lang_tag="lang_phone_settings" text="Phone settings"></Label>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="auth.js" Function="get_my_contact_info_notifications">
+<Label lang_tag="lang_contact_notifications_limits" text="Notifications limits"></Label>
+</Tab>
+<Tab Position="0" TabType="javascript" ScriptName="auth.js" Function="get_my_contact_info_test_notifications">
+<Label lang_tag="lang_test_sms_notification" text="Test Notifications"></Label>
+</Tab>
+</Tabs>
+</SetupDevice>
+</SetupDevices>
+<category_filter>
+<category_filte id="1">
+<categories></categories>
+<Label lang_tag="all" text="All"></Label>
+</category_filte>
+<category_filte id="2">
+<categories categorie="15"></categories>
+<Label lang_tag="av_devices" text="Audio/Video"></Label>
+</category_filte>
+<category_filte id="3">
+<categories categorie="3"></categories>
+<Label lang_tag="lights" text="Lights"></Label>
+</category_filte>
+<category_filte id="4">
+<categories categorie="6"></categories>
+<Label lang_tag="cameras" text="Cameras"></Label>
+</category_filte>
+<category_filte id="5">
+<categories categorie="7"></categories>
+<Label lang_tag="door_locks" text="Door locks"></Label>
+</category_filte>
+<category_filte id="6">
+<categories categorie="18"></categories>
+<Label lang_tag="sensors" text="Sensors"></Label>
+</category_filte>
+<category_filte id="7">
+<categories categorie="5"></categories>
+<Label lang_tag="thermostats" text="Thermostats"></Label>
+</category_filte>
+</category_filter>
+</root>

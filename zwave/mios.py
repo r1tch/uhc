@@ -8,6 +8,7 @@ from service import Service
 from .nodes import ZWaveNodes
 from .miosnodelistquery import ZWaveMiosNodelistQuery
 from .miosstatusupdate import ZWaveMiosStatusUpdate
+from .miosrequest import ZWaveMiosRequest
 
 class ZWaveMios(Service):
     def __init__(self, container, config, eventloop):
@@ -17,6 +18,7 @@ class ZWaveMios(Service):
         self.zwavenodes = None
         self.nodelistquery = ZWaveMiosNodelistQuery(config, eventloop, self._gotNodes)
         self.statusupdate = ZWaveMiosStatusUpdate(config, eventloop, self._statusCallback)
+        self.request = ZWaveMiosRequest(config, eventloop, self._statusCallback)
         self.levels = {}
 
     # @override
@@ -29,21 +31,26 @@ class ZWaveMios(Service):
             response = self._allNodesMsg()
             response["origMsg"] = msgDict
             fromService.msg(self, response)
+        elif msgDict["msg"] == "setLevel":
+            if "id" in msgDict and "level" in msgDict:
+                self.request.setLevel(int(msgDict["id"]), int(msgDict["level"]))
+        elif msgDict["msg"] == "stopLevelChange":
+            if "id" in msgDict:
+                self.request.stopLevelChange(int(msgDict["id"]))
+        elif msgDict["msg"] == "setAllLights":
+            if "level" in msgDict:
+                self.request.setAllLights(int(msgDict["level"]))
         else:
             logging.error("Unknown msg: {}", msgDict["msg"])
-
-    # @override
-    def execute(self, command):
-        # TODO turn stuff on-off
-        raise NotImplementedError
 
     def _allNodesMsg(self):
         return { "msg": "gotNodes", "nodes": self.zwavenodes.allNodes()}
 
     def _gotNodes(self, zwavenodes):
         self.zwavenodes = zwavenodes
-        # TODO notify listeners about new node list
+        
         self.statusupdate.setNodes(self.zwavenodes)
+        self.request.setNodes(self.zwavenodes)
 
         self.broadcast(self._allNodesMsg())
         
@@ -66,5 +73,4 @@ class ZWaveMios(Service):
 
         if len(changedLevels):
             self.broadcast({ "msg": "changedLevels", "changedLevels": changedLevels })
-
 

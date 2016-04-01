@@ -12,7 +12,7 @@ class Controller:
         self.config = config
         self.services = {}
 
-    def addServices(self, eventloop):
+    def _createServices(self, eventloop):
         """Hardcoding a list of services - later we might add auto-detection of services present"""
         ZWaveMios(self, self.config, eventloop)
         TcpServer(self, self.config, eventloop)
@@ -22,7 +22,7 @@ class Controller:
         eventloop = asyncio.get_event_loop()
         eventloop.set_debug(True)
         eventloop.call_soon(Controller.w, self)
-        self.addServices(eventloop)
+        self._createServices(eventloop)
 
         eventloop.run_forever()
 

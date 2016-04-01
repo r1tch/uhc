@@ -2,6 +2,7 @@
 
 import asyncio
 import ipaddress
+import json
 import logging
 import sys
 
@@ -32,8 +33,18 @@ class TcpServer(Service):
 
         def data_received(self, data):
             message = data.decode()
-            print('Data received: {!r}'.format(message))
-            self.tcpServer._testCallback(message)
+            try:
+                jsonData = json.loads(message)
+            except ValueError as e:
+                logging.error("Closing connection - invalid JSON: {}, exception: {}".format(message, e))
+                self.transport.close()
+                return
+
+            peername = self.transport.get_extra_info('peername')
+            logging.info("TcpServer receive {}: {}".format(peername, jsonData))
+            if "service" not in jsonData:
+                logging.error("Dest service missing")
+            self.tcpServer._jsonReceived(self, jsonData)
 
             if message == "exit\n":
                 sys.exit()
@@ -47,6 +58,9 @@ class TcpServer(Service):
                 address = ipaddress.IPv4Address(addressStr)
 
             return address.is_private or address.is_local or address.is_link_local
+
+        def write(self, msgStr):
+            self.transport.write(msgStr.encode())
 
     def __init__(self, container, config, eventloop):
         super().__init__(container)
@@ -89,5 +103,6 @@ class TcpServer(Service):
         msgDict = { "msg": "getNodes", "connection": connection }
         self.sendTo("zwave", msgDict)
 
-    def _testCallback(self, msg):
-        print("testcallback: " + msg)
+    def _jsonReceived(self, connection, jsonData):
+        jsonData["connection"] = self
+        self.sendTo(jsonData["service"], jsonData)
