@@ -57,7 +57,13 @@ class TcpServer(Service):
             elif '.' in addressStr:
                 address = ipaddress.IPv4Address(addressStr)
 
-            return address.is_private or address.is_local or address.is_link_local
+            isLocal = False
+            try:
+                isLocal = address.is_private or address.is_local or address.is_link_local
+            except AttributeError:  # if not local, is_local will not exists (??)
+                pass
+
+            return isLocal
 
         def write(self, msgStr):
             self.transport.write(msgStr.encode())

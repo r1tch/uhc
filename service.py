@@ -4,7 +4,6 @@ class Service:
     """Base class for all services"""
     def __init__(self, container):
         self.container = container
-        self.listeners = set()
         self.container.services[self.id()] = self
 
     def broadcast(self, msgDict):

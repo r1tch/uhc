@@ -9,6 +9,19 @@ import traceback
 from controller import Controller
 import config
 
+def initLog(log_file, log_level):
+    try:
+        logging.basicConfig(filename=log_file,
+                            level=log_level,
+                            format='%(asctime)s %(filename)s:%(lineno)s %(levelname)s %(message)s',
+                            datefmt='%Y-%m-%d %H:%M:%S')
+    except OSError:  # we prepare for read-only filesystem here:
+        consoleHandler = logging.StreamHandler()
+        consoleHandler.setLevel(log_level)
+        consoleHandler.setFormatter(logging.Formatter('%(asctime)s %(filename)s:%(lineno)s %(levelname)s %(message)s', '%Y-%m-%d %H:%M:%S'))
+        logging.getLogger('').addHandler(consoleHandler)
+
+
 if __name__ == '__main__':
 
     uhc_local_dir = os.path.expanduser("~/.uhc")
@@ -19,10 +32,10 @@ if __name__ == '__main__':
 
     config = config.Config(uhc_local_dir)
 
-    logging.basicConfig(filename=uhc_local_dir + "/uhc.log",
-                        level=config.getint("logging", "level"),
-                        format='%(asctime)s %(filename)s:%(lineno)s %(levelname)s %(message)s',
-                        datefmt='%Y-%m-%d %H:%M:%S')
+    log_file = uhc_local_dir + "/uhc.log"
+    log_level = config.getint("logging", "level")
+    initLog(log_file, log_level)
+
     logging.info("--------- Init ---------")
     c = Controller(config)
 

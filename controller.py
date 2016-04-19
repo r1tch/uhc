@@ -21,12 +21,9 @@ class Controller:
         logging.info("Controller startup")
         eventloop = asyncio.get_event_loop()
         eventloop.set_debug(True)
-        eventloop.call_soon(Controller.w, self)
+        #eventloop.call_soon(Controller.w, self)
         self._createServices(eventloop)
 
         eventloop.run_forever()
 
-    def w(self):
-        print("Just testing")
-        logging.warning("warn2")
-        logging.info("hi2")
+    #def w(self):

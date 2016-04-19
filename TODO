@@ -36,3 +36,40 @@
   - AutoShade -- using entry/exit/sunrise/sunset
   - SleepSecurity -- sleep detection, etc
   - Media -- movie mode & co
+
+
+  ----- Android Client
+  - Names: UHC - Universal Home Control -- hlome, hyome, etc... Why? Needed a .com address :)
+  - Design:
+    - see Google Photos:
+      - icon tabs on the bottom to choose between screens (http://developer.android.com/training/implementing-navigation/lateral.html#PagerTitleStrip ?)
+      - AppBar on top
+      - _no_ navigation drawer (only later for multiple connections???)
+      - "..." for settings -- well, make The Gear the only button for now
+  - Workings:
+    - one activity, swipe-tabs PagerTitleStrip w icons on bottom
+    - fragments for the tabs:
+      - shades
+      - lights
+      - media -- should include projector + hifi
+      - climate (A/C and then Loxone interface?)
+      - security (display movements, sleep time, intercom)
+    - Service: handles connectivity and auto-reconnects; service running -> connected
+      - also handles screen wakeup (subclass?)
+    - Activity:
+      - onResume: gets service reference -- http://stackoverflow.com/questions/10482171/how-to-get-reference-to-running-service
+      - onPause: tells svc to remove Activity
+      - registers it in the service for updates (to avoid comm via intents)
+        - note: tcp-induced callbacks must use runOnUIThread!
+      - fn calls can deliver json-generated objects
+  - Settings
+    - accessible from menu via menu btn
+    - host, port for now
+    - Server Configuration -- changes and uploads server config settings, LATER
+  - List of lights with on-off switch
+    - LATER: long-press for dimmers, exact settings
+    - LATER: icon for dimmer & on-off
+  - List of shades - 3 buttons
+    - LATER: long-press for level setting
+  - all other modules...
+
