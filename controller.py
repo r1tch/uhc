@@ -20,10 +20,7 @@ class Controller:
     def run(self):
         logging.info("Controller startup")
         eventloop = asyncio.get_event_loop()
-        eventloop.set_debug(True)
-        #eventloop.call_soon(Controller.w, self)
+        # eventloop.set_debug(True)
         self._createServices(eventloop)
 
         eventloop.run_forever()
-
-    #def w(self):

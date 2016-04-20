@@ -10,16 +10,24 @@ from controller import Controller
 import config
 
 def initLog(log_file, log_level):
+
+    # disable http request info logs:
+    logging.getLogger("requests").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
+
+    log_format = '%(asctime)s %(filename)s:%(lineno)s %(levelname)s %(message)s'
+    log_datefmt = '%Y-%m-%d %H:%M:%S'
     try:
         logging.basicConfig(filename=log_file,
                             level=log_level,
-                            format='%(asctime)s %(filename)s:%(lineno)s %(levelname)s %(message)s',
-                            datefmt='%Y-%m-%d %H:%M:%S')
-    except OSError:  # we prepare for read-only filesystem here:
-        consoleHandler = logging.StreamHandler()
-        consoleHandler.setLevel(log_level)
-        consoleHandler.setFormatter(logging.Formatter('%(asctime)s %(filename)s:%(lineno)s %(levelname)s %(message)s', '%Y-%m-%d %H:%M:%S'))
-        logging.getLogger('').addHandler(consoleHandler)
+                            format=log_format,
+                            datefmt=log_datefmt)
+    except OSError:  # we prepare for read-only filesystem here, fall back to console:
+        logging.basicConfig(stream=sys.stdout,
+                            level=log_level,
+                            format=log_format,
+                            datefmt=log_datefmt)
+
 
 
 if __name__ == '__main__':

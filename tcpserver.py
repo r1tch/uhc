@@ -29,7 +29,8 @@ class TcpServer(Service):
         def connection_lost(self, exception):
             peername = self.transport.get_extra_info('peername')
             logging.info('TcpServer: connection lost from {}'.format(peername))
-            self.tcpServer.connections.remove(self)
+            if self in self.tcpServer.connections:
+                self.tcpServer.connections.remove(self)
 
         def data_received(self, data):
             message = data.decode()
