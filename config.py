@@ -22,4 +22,11 @@ class Config(configparser.ConfigParser):
         self.set("mios", "host", "10.0.1.51")
         self.set("mios", "update_frequency_secs", "3")
 
+        self.add_section("kodi")
+        self.set("kodi", "host", "10.0.1.27")   # osmc2
+        self.set("kodi", "port", "9090")
+        self.set("kodi", "reconnectTimeout", "5")
+
+        self.add_section("paradox")
+        self.set("paradox", "device", "/dev/ttyAMA0")  # RPi default
 

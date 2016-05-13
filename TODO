@@ -47,13 +47,17 @@
       - _no_ navigation drawer (only later for multiple connections???)
       - "..." for settings -- well, make The Gear the only button for now
   - Workings:
-    - one activity, swipe-tabs PagerTitleStrip w icons on bottom
-    - fragments for the tabs:
+    - one activity, swipe-tabs PagerTitleStrip w icons on bottom -- DONE
+    - icons on bottom: later? maybe now we could do it since scroll problem is sorted out
+    - fragments for the tabs: - DONE
       - shades
       - lights
       - media -- should include projector + hifi
       - climate (A/C and then Loxone interface?)
       - security (display movements, sleep time, intercom)
+    - save list of ZWave nodes & status updates in shared prefs
+    - create a list of lights with on-off switch
+    - ...then shades, with up-stop-down switches; with feedback
     - Service: handles connectivity and auto-reconnects; service running -> connected
       - also handles screen wakeup (subclass?)
     - Activity:
@@ -66,6 +70,14 @@
     - accessible from menu via menu btn
     - host, port for now
     - Server Configuration -- changes and uploads server config settings, LATER
+  - ----------- continue HERE --------------------
+  - Paradox support - to report events - TESTING NEEDED
+  - SunRiseSet
+  - automators:
+    - shades
+    - sleep detection
+    - etc
+  - IR module - should be easy with udpirsend, soldering needed
   - List of lights with on-off switch
     - LATER: long-press for dimmers, exact settings
     - LATER: icon for dimmer & on-off
@@ -73,3 +85,7 @@
     - LATER: long-press for level setting
   - all other modules...
 
+  {"msg": "gotNodes", "fromService": "zwave", "nodes": [{"id": 1, "level": 0, "name": "ZWave", "type": "ZWaveNetwork"}, {"id": 2, "level": 0, "name": "_Scene Controller", "type": "SceneController"}, {"id": 4, "level": 0, "name": "NappaliEbedlo", "type": "BinaryLight"}, {"id": 5, "level": 0, "name": "NappaliKanape", "type": "BinaryLight"}, {"id": 6, "level": 100, "name": "Konyha", "type": "BinaryLight"}, {"id": 7, "level": 0, "name": "Dolgozo", "type": "BinaryLight"}, {"id": 8, "level": 0, "name": "Eloszoba", "type": "BinaryLight"}, {"id": 11, "level": 0, "name": "Furdonagy", "type": "BinaryLight"}, {"id": 12, "level": 0, "name": "Furdokad", "type": "DimmableLight"}, {"id": 13, "level": 0, "name": "Halo", "type": "BinaryLight"}, {"id": 14, "level": 100, "name": "HaloRedony", "type": "WindowCovering"}, {"id": 15, "level": 100, "name": "DolgozoRedony", "type": "WindowCovering"}, {"id": 16, "level": 0, "name": "LiloRedony", "type": "WindowCovering"}, {"id": 18, "level": 0, "name": "KonyhaRedony", "type": "WindowCovering"}, {"id": 19, "level": 100, "name": "NappaliUtcaRedony", "type": "WindowCovering"}, {"id": 20, "level": 0, "name": "NappaliErkelyRedony", "type": "WindowCovering"}, {"id": 21, "level": 100, "name": "NappaliKertRedony", "type": "WindowCovering"}, {"id": 22, "level": 100, "name": "NappaliOldalRedony", "type": "WindowCovering"}, {"id": 23, "level": 0, "name": "ErkelyLampa", "type": "BinaryLight"}, {"id": 24, "level": 0, "name": "ZTH100 Controller", "type": "SceneController"}, {"id": 25, "level": 0, "name": "Lilo", "type": "DimmableLight"}, {"id": 26, "level": 100, "name": "Vaszon", "type": "WindowCovering"}]}
+{"changedLevels": {"6": 0}, "msg": "changedLevels", "fromService": "zwave"}
+
+ {"service": "kodi", "jsonrpc": "2.0", "method": "Playlist.GetPlaylists"}

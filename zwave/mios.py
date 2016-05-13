@@ -27,7 +27,11 @@ class ZWaveMios(Service):
 
     # @override
     def msg(self, fromService, msgDict):
-        if msgDict["msg"] == "getNodes":
+        if msgDict["msg"] == "newConnection":
+            response = self._allNodesMsg()
+            response["id"] = msgDict["id"]
+            fromService.msg(self, response)
+        elif msgDict["msg"] == "getNodes":
             response = self._allNodesMsg()
             response["origMsg"] = msgDict
             fromService.msg(self, response)
@@ -40,8 +44,6 @@ class ZWaveMios(Service):
         elif msgDict["msg"] == "setAllLights":
             if "level" in msgDict:
                 self.request.setAllLights(int(msgDict["level"]))
-        else:
-            logging.error("Unknown msg: {}", msgDict["msg"])
 
     def _allNodesMsg(self):
         return { "msg": "gotNodes", "nodes": self.zwavenodes.allNodes()}

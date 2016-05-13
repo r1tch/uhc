@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import logging
+
 class Service:
     """Base class for all services"""
     def __init__(self, container):
@@ -13,6 +15,7 @@ class Service:
 
     def sendTo(self, toServiceId, msgDict):
         if toServiceId not in self.container.services:
+            logging.error("{} is not a known service".format(toServiceId))
             return
 
         toService = self.container.services[toServiceId]
@@ -23,6 +26,6 @@ class Service:
         raise NotImplementedError
 
     def msg(self, fromService, msgDict):
-        """Sends a message (dict) to this service - response also happens via msg call(s)"""
+        """Sends a message (dict) to this service - response also happens via sendTo call(s)"""
         raise NotImplementedError
 

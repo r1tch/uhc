@@ -3,6 +3,8 @@
 import asyncio
 import logging
 
+from kodi import Kodi
+from paradox import Paradox
 from tcpserver import TcpServer
 from zwave.mios import ZWaveMios
 
@@ -16,6 +18,8 @@ class Controller:
         """Hardcoding a list of services - later we might add auto-detection of services present"""
         ZWaveMios(self, self.config, eventloop)
         TcpServer(self, self.config, eventloop)
+        Kodi(self, self.config, eventloop)
+        Paradox(self, self.config, eventloop)
 
     def run(self):
         logging.info("Controller startup")
