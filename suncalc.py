@@ -6,12 +6,14 @@ http://michelanders.blogspot.fr/2010/12/<br>
         calulating-sunrise-and-sunset-in-python.html
 """
 
+import tzlocal
+
 from datetime import datetime, time
 from math import cos, sin, acos, asin, tan
 from math import degrees as deg, radians as rad
 
 
-class SunRise:
+class SunCalc:
     """
     Calculate sunrise and sunset based on equations from NOAA
     http://www.srrb.noaa.gov/highlights/sunrise/calcdetails.html
@@ -32,38 +34,32 @@ class SunRise:
         self.time = None
         self.timezone = None
 
-    def sunrise(self, when=datetime.now()):
+    def sunrise(self, when=datetime.now(tz=tzlocal.get_localzone())):
         """
         return the time of sunrise as a datetime.time object
         when is a datetime.datetime object. If none is given
         a local time zone is assumed (including daylight saving
         if present)
         """
-        if when is None:
-            when = datetime.now()
         self.__preptime(when)
         self.__calc()
-        return SunRise.__timefromdecimalday(self.sunrise_t)
+        return SunCalc.__timefromdecimalday(self.sunrise_t)
 
-    def sunset(self, when=None):
+    def sunset(self, when=datetime.now(tz=tzlocal.get_localzone())):
         """
         returns datetime when sun will set
         """
-        if when is None:
-            when = datetime.now()
         self.__preptime(when)
         self.__calc()
-        return SunRise.__timefromdecimalday(self.sunset_t)
+        return SunCalc.__timefromdecimalday(self.sunset_t)
 
-    def solarnoon(self, when=None):
+    def solarnoon(self, when=datetime.now(tz=tzlocal.get_localzone())):
         """
         datetime of solar noon
         """
-        if when is None:
-            when = datetime.now()
         self.__preptime(when)
         self.__calc()
-        return SunRise.__timefromdecimalday(self.solarnoon_t)
+        return SunCalc.__timefromdecimalday(self.solarnoon_t)
 
     @staticmethod
     def __timefromdecimalday(day):
@@ -94,10 +90,11 @@ class SunRise:
         wtime = when.time()
         self.time = (wtime.hour + wtime.minute / 60.0 + wtime.second / 3600.0) / 24.0
 
-        self.timezone += 2  # Is this right?
         offset = when.utcoffset()
-        if not offset is None:
-            self.timezone = offset.seconds / 3600.0
+        if offset is None:
+            raise ValueError("tzone should be set")
+
+        self.timezone = offset.seconds / 3600.0
 
     def __calc(self):
         """
@@ -127,8 +124,7 @@ class SunRise:
         Mobliq = 23 + (26 + ((21.448 - jcent * (46.815 + jcent * (0.00059 - jcent * 0.001813)))) / 60) / 60
         obliq = Mobliq + 0.00256 * cos(rad(125.04 - 1934.136 * jcent))
         vary = tan(rad(obliq / 2)) * tan(rad(obliq / 2))
-        Seqcent = sin(rad(Manom)) * (1.914602 - jcent * (0.004817 + 0.000014 * jcent)) + sin(rad(2 * Manom)) * (
-        0.019993 - 0.000101 * jcent) + sin(rad(3 * Manom)) * 0.000289
+        Seqcent = sin(rad(Manom)) * (1.914602 - jcent * (0.004817 + 0.000014 * jcent)) + sin(rad(2 * Manom)) * (0.019993 - 0.000101 * jcent) + sin(rad(3 * Manom)) * 0.000289
         Struelong = Mlong + Seqcent
         Sapplong = Struelong - 0.00569 - 0.00478 * sin(rad(125.04 - (1934.136 * jcent)))
         declination = deg(asin(sin(rad(obliq)) * sin(rad(Sapplong))))
@@ -148,5 +144,13 @@ class SunRise:
 
 if __name__ == "__main__":
     # s=sun(lat=52.37,long=4.90) #amsterdam
-    sun = SunRise()
-    print(sun.sunrise(), sun.solarnoon(), sun.sunset())
+    sun = SunCalc(lat=47.48094, lon=19.01664)
+    mytz = tzlocal.get_localzone()
+    print("mytz:{}".format(repr(mytz)))
+    when = datetime.now(tz=mytz)
+    print("x:{}".format(when))
+    when = datetime(2016,5,13,0,0,0, tzinfo=mytz)
+    print("x:{}".format(when))
+    when = when.astimezone(mytz)
+    print("x:{} - {}".format(repr(when), repr(mytz)))
+    print(sun.sunrise(when), sun.solarnoon(when), sun.sunset(when))
