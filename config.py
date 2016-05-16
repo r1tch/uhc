@@ -29,6 +29,7 @@ class Config(configparser.ConfigParser):
 
         self.add_section("paradox")
         self.set("paradox", "device", "/dev/ttyAMA0")  # RPi default
+        self.set("paradox", "zonenames", "1:BejÃ¡rat,2:ElÅszoba,3:Nappali,4:NappaliÃveg,5:HÃ¡lÃ³,6:DolgozÃ³,7:Gyerekszoba,8:FÃ¼st,9:SzirÃ©na")
 
         self.add_section("location")
         self.set("location", "city", "Budapest")

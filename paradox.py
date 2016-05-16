@@ -74,6 +74,11 @@ class Paradox(Service):
         eventloop.add_reader(self.serial, self.readSerial)
         self.trouble = ""
 
+        self.zonenames = {}
+        for x in "1:Bejarat,2:Eloszoba".split(','):
+            zone,name = x.split(':')
+            self.zonenames[int(zone)] = name
+
     #@override
     def id(self):
         return "paradox"
@@ -96,12 +101,16 @@ class Paradox(Service):
             return
 
         if self._eventGroup(msg) == ZoneClosed:
-            logging.debug("ZoneClosed:{}".format(self._eventSubgroup(msg)))
-            self.broadcast({"msg": "ZoneClosed", "zone": self._eventSubgroup(msg)})
+            zoneid = self._eventSubgroup(msg)
+            zonename = self._getZonename(zoneid)
+            logging.debug("ZoneClosed: {} - {}".format(zoneid, zonename))
+            self.broadcast({"msg": "ZoneClosed", "zone": zoneid, "zonename": zonename})
         
         elif self._eventGroup(msg) == ZoneOpen:
-            logging.debug("ZoneOpen:{}".format(self._eventSubgroup(msg)))
-            self.broadcast({"msg": "ZoneOpen", "zone": self._eventSubgroup(msg)})
+            zoneid = self._eventSubgroup(msg)
+            zonename = self._getZonename(zoneid)
+            logging.debug("ZoneOpen: {} - {}".format(zoneid, zonename))
+            self.broadcast({"msg": "ZoneOpen", "zone": zoneid, "zonename": zonename})
         
         elif self._eventGroup(msg) == PartitionStatus:           # only handling the two interesting ones
             if self._eventSubgroup(msg) == EntryDelayStarted:
@@ -177,5 +186,13 @@ class Paradox(Service):
         if not checksumMatches:
             print("mismatch, final sum: {}, in msg: {}".format(sum, msg[36]))
         return checksumMatches
+
+    def _getZonename(self, zoneId):
+        if zoneId in zonenames:
+            return zonenames[zoneId]
+
+        return "???"
+
+
 
 
