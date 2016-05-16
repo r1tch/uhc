@@ -46,8 +46,8 @@ class Kodi(Service):
         def jsonError(self):
             self.transport.close()
 
-    def __init__(self, container, config, eventloop):
-        super().__init__(container)
+    def __init__(self, controller, config, eventloop):
+        super().__init__(controller)
         self.eventloop = eventloop
         self.connection = None
 

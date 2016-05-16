@@ -11,13 +11,14 @@ from service import Service
 class Schedule(Service):
     """Schedules an msg to be sent at given time"""
 
-    def __init__(self, container, config, eventloop):
-        super().__init__(container)
+    def __init__(self, controller, config, eventloop):
+        super().__init__(controller)
         self.eventloop = eventloop
-        self.eventloop.call_later(1, self.sendNewDay)
         self.events = dict()
         self.nextEventId = 1
         self.midnightHandle = None
+        
+        self.eventloop.call_later(1, self.sendNewDay)   # upon startup, always initialize services
 
     #@override
     def id(self):
@@ -26,30 +27,30 @@ class Schedule(Service):
     # returns a message defined in "deferredMsg" param, sending to originating service
     #@override
     def msg(self, fromService, msgDict):
-        if msgDict["msg"] == "addSchedule":
+        if msgDict["msg"] == "newEvent":
             delay = float(0)
             if "at" in msgDict:
                 delay = float(msgDict["at"]) - time.time()
             elif "delay" in msgDict:
                 delay = float(msgDict["delay"])
             else:
-                logging.error('addSchedule needs "at" or "delay" param')
+                logging.error('newEvent needs "at" or "delay" param')
                 return
 
             if "deferredMsg" not in msgDict:
-                logging.error('addSchedule needs "deferredMsg" param')
+                logging.error('newEvent needs "deferredMsg" param')
                 return
 
             if "desc" not in msgDict:
-                logging.error('addSchedule needs "desc" param')
+                logging.error('newEvent needs "desc" param')
                 return
 
             if delay <= 0:
-                logging.error('{} attempted to schedule an event in the past on "{}"'.format(fromService.id(), msgDict["desc"]))
+                logging.info('{} attempted to schedule an event in the past on "{}"'.format(fromService.id(), msgDict["desc"]))
                 return
 
-            if delay > 48 * 60 * 60:
-                logging.error('{} attempted to schedule an event too far in the future on "{}"'.format(fromService.id(), msgDict["desc"]))
+            if delay > 24 * 60 * 60:    # not planning more than 1 day
+                logging.info('{} attempted to schedule an event too far in the future on "{}"'.format(fromService.id(), msgDict["desc"]))
                 return
 
             at = time.time() + delay
@@ -105,6 +106,10 @@ class Schedule(Service):
         nextMidnight = todayMidnight + datetime.timedelta(days=1)
 
         return nextMidnight.timestamp() - nowTimestamp
+
+    def hourminToTimestamp(hour, minute):       # TODO is this used? should always use configable values...
+        timeDt = datetime.datetime.now().replace(hour=hour, minute=minute, second=0, microsecond=0)
+        return timeDt.timestamp()
 
 
 if __name__ == "__main__":

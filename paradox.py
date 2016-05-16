@@ -67,8 +67,8 @@ AnyTroubleEvent                = 99
 
 
 class Paradox(Service):
-    def __init__(self, container, config, eventloop):
-        super().__init__(container)
+    def __init__(self, controller, config, eventloop):
+        super().__init__(controller)
         dev = config.get('paradox', 'device')
         self.serial = serial.Serial(dev)   # default 9600 8N1 just fits Paradox
         eventloop.add_reader(self.serial, self.readSerial)
@@ -76,8 +76,8 @@ class Paradox(Service):
 
         self.zonenames = {}
         for x in "1:Bejarat,2:Eloszoba".split(','):
-            zone,name = x.split(':')
-            self.zonenames[int(zone)] = name
+            zoneid,name = x.split(':')
+            self.zonenames[int(zoneid)] = name
 
     #@override
     def id(self):
@@ -104,13 +104,13 @@ class Paradox(Service):
             zoneid = self._eventSubgroup(msg)
             zonename = self._getZonename(zoneid)
             logging.debug("ZoneClosed: {} - {}".format(zoneid, zonename))
-            self.broadcast({"msg": "ZoneClosed", "zone": zoneid, "zonename": zonename})
+            self.broadcast({"msg": "ZoneClosed", "zoneid": zoneid, "zonename": zonename})
         
         elif self._eventGroup(msg) == ZoneOpen:
             zoneid = self._eventSubgroup(msg)
             zonename = self._getZonename(zoneid)
             logging.debug("ZoneOpen: {} - {}".format(zoneid, zonename))
-            self.broadcast({"msg": "ZoneOpen", "zone": zoneid, "zonename": zonename})
+            self.broadcast({"msg": "ZoneOpen", "zoneid": zoneid, "zonename": zonename})
         
         elif self._eventGroup(msg) == PartitionStatus:           # only handling the two interesting ones
             if self._eventSubgroup(msg) == EntryDelayStarted:
@@ -125,32 +125,38 @@ class Paradox(Service):
             logging.debug("BellStatus:{}".format(self._eventSubgroup(msg)))
         
         elif self._eventGroup(msg) == ArmWithUser:
+            self.controller.state.atHome = False
             logging.debug("ArmWithUser:{}".format(self._eventSubgroup(msg)))
             self.broadcast({"msg": "Armed", "user": self._eventSubgroup(msg)})
         
         elif self._eventGroup(msg) == DisarmWithUser:
+            self.controller.state.atHome = True
             logging.debug("DisarmWithUser:{}".format(self._eventSubgroup(msg)))
             self.broadcast({"msg": "Disarmed", "user": self._eventSubgroup(msg)})
         
         elif self._eventGroup(msg) == DisarmAAWithUser:
+            self.controller.state.atHome = True
             logging.debug("DisarmAAWithUser:{}".format(self._eventSubgroup(msg)))
             self.broadcast({"msg": "Disarmed", "user": self._eventSubgroup(msg)})
         
         elif self._eventGroup(msg) == AlarmCxlWithUser:
+            self.controller.state.atHome = True
             logging.debug("AlarmCxlWithUser:{}".format(self._eventSubgroup(msg)))
             self.broadcast({"msg": "Disarmed", "user": self._eventSubgroup(msg)})
         
         elif self._eventGroup(msg) == SpecialArming:
+            self.controller.state.atHome = False
             logging.debug("SpecialArming:{}".format(self._eventSubgroup(msg)))
             self.broadcast({"msg": "Armed", "user": self._eventSubgroup(msg)})
         
         elif self._eventGroup(msg) == SpecialDisarm:
+            self.controller.state.atHome = True
             logging.debug("SpecialDisarm:{}".format(self._eventSubgroup(msg)))
             self.broadcast({"msg": "Disarmed", "user": self._eventSubgroup(msg)})
         
         elif self._eventGroup(msg) == SpecialAlarm:
             logging.debug("SpecialAlarm:{}".format(self._eventSubgroup(msg)))
-            self.broadcast({"msg": "Disarmed", "user": self._eventSubgroup(msg)})
+            self.broadcast({"msg": "Disarmed", "user": self._eventSubgroup(msg)}) # ??
         
         elif self._eventGroup(msg) == NewTrouble:
             troubleStr = _troubleToStr(self._eventSubgroup(msg))

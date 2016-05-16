@@ -8,8 +8,8 @@ from suncalc import SunCalc
 
 class SunRiseSet(Service):
     """Generates events for sunrise and sunset"""
-    def __init__(self, container, config, eventloop):
-        super().__init__(container)
+    def __init__(self, controller, config, eventloop):
+        super().__init__(controller)
         self.eventloop = eventloop
         lat = config.getfloat("location", "latitude")
         lon = config.getfloat("location", "longitude")
@@ -30,9 +30,9 @@ class SunRiseSet(Service):
             sunsetStr = datetime.datetime.fromtimestamp(sunset).strftime('%H:%M')
             logging.info("Sunrise: {}, sunset: {}".format(sunriseStr, sunsetStr))
             
-            self.broadcast({"msg":"sunRiseSet", "sunrise": sunrise, "sunset": sunset})
+            self.broadcast({"msg":"SunRiseSet", "sunrise": sunrise, "sunset": sunset})
 
-            #self.sendTo("schedule", {"msg": "addSchedule", "at": sunset, "deferredMsg": {"msg": "test"}, "desc": "just a test" })
+            #self.sendTo("schedule", {"msg": "newEvent", "at": sunset, "deferredMsg": {"msg": "test"}, "desc": "just a test" })
             #self.sendTo("schedule", {"msg": "cancelMyEvents"})
 
 

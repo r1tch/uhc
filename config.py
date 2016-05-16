@@ -1,15 +1,26 @@
 #!/usr/bin/env python3
 
 import configparser
+import datetime
 import logging
 
 class Config(configparser.ConfigParser):
     def __init__(self, local_dir):
         super().__init__()
-        self.set_default_values()
+        self._set_default_values()
         self.read(local_dir + "/config.ini")
 
-    def set_default_values(self):
+    def hhmmts(self, section, key):
+        """Converts a hh:mm value into UNIX timestamp"""
+        try:
+            hhmm = self.get(section, key).split(':')
+        except:
+            return 0
+        
+        timeDt = datetime.datetime.now().replace(hour=int(hhmm[0]), minute=int(hhmm[1]), second=0, microsecond=0)
+        return timeDt.timestamp()
+
+    def _set_default_values(self):
         self.add_section("logging")
         # we expect numerical values here
         # -- see logging's source (DEBUG=10, INFO=20, WARNING=30, ERROR=40)
@@ -37,4 +48,17 @@ class Config(configparser.ConfigParser):
         self.set("location", "latitude", "47.48094")
         self.set("location", "longitude", "19.01664")
 
+        self.add_section("autoshade")
+        self.set("autoshade", "entryopen", "NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony")
+        self.set("autoshade", "exitclose", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony,LiloRedony")
+        self.set("autoshade", "floweropen", "NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony")
+        self.set("autoshade", "flowerclose", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony,LiloRedony")
+        self.set("autoshade", "summerfloweropentime", "15:00") # keep the house cool
+        self.set("autoshade", "morningopen", "NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony")
+        self.set("autoshade", "morningopenzone", "3")
+        self.set("autoshade", "morningopenfrom", "6:00")
+        self.set("autoshade", "morningopento", "12:00")
+        self.set("autoshade", "duskclose", "NappaliUtcaRedony,KonyhaRedony,HaloRedony")
+        self.set("autoshade", "nightclose", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,LiloRedony")
+        self.set("autoshade", "nightclosetime", "3:00")
 

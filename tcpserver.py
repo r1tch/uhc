@@ -62,11 +62,8 @@ class TcpServer(Service):
             self.transport.close()
 
 
-#        def write(self, msgStr):
-#            self.transport.write(msgStr.encode())
-
-    def __init__(self, container, config, eventloop):
-        super().__init__(container)
+    def __init__(self, controller, config, eventloop):
+        super().__init__(controller)
         self.connections = set()
         self.nextid = 1
         coroutine = eventloop.create_server(lambda: TcpServer.RemoteProtocol(self), port=config.getint("remote", "port"))

@@ -1,25 +1,26 @@
 #!/usr/bin/env python3
 
+import datetime
 import logging
 
 class Service:
     """Base class for all services"""
-    def __init__(self, container):
-        self.container = container
-        self.container.services[self.id()] = self
+    def __init__(self, controller):
+        self.controller = controller
+        self.controller.services[self.id()] = self
         print("added svc {}".format(self.id()))
 
     def broadcast(self, msgDict):
-        for service in self.container.services.values():
+        for service in self.controller.services.values():
             if service != self:         # do not send to self - we should use methods to do stuff privately
                 service.msg(self, msgDict)
 
     def sendTo(self, toServiceId, msgDict):
-        if toServiceId not in self.container.services:
+        if toServiceId not in self.controller.services:
             logging.error("{} is not a known service".format(toServiceId))
             return
 
-        toService = self.container.services[toServiceId]
+        toService = self.controller.services[toServiceId]
         toService.msg(self, msgDict)
 
     def id(self):
@@ -29,4 +30,6 @@ class Service:
     def msg(self, fromService, msgDict):
         """Sends a message (dict) to this service - response also happens via sendTo call(s)"""
         raise NotImplementedError
+
+
 

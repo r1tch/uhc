@@ -75,13 +75,15 @@
   - SunRiseSet -- service, reports timestamps on new days - DONE
   - Schedule - DONE
   - automators:
-    - shades
+    - shades - AutoShade
       - sunset down: sunset + 15mins, to be dark enough
       - sunrise up: sunrise - 15 mins
+    - AutoLight
+      - entry: light up entry hall
+      - flashalarm on/off via msg
     - sleep detection (SleepSecurity)
-    - flashalarm
     - etc
-  - IR module - should be easy with udpirsend, soldering needed first
+  - IR module - should be easy with udpirsend, soldering needed first NAH! use irtrans, write client... should be easy
   - HiFi control (on-off, switch to proper source, volume up/down, maybe mute?)
   - XBMC android control
   - heating control
