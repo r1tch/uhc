@@ -30,3 +30,10 @@ class Config(configparser.ConfigParser):
         self.add_section("paradox")
         self.set("paradox", "device", "/dev/ttyAMA0")  # RPi default
 
+        self.add_section("location")
+        self.set("location", "city", "Budapest")
+        self.set("location", "country", "Hungary")
+        self.set("location", "latitude", "47.48094")
+        self.set("location", "longitude", "19.01664")
+
+

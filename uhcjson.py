@@ -3,6 +3,7 @@
 import json
 import logging
 
+from scheduledevent import ScheduledEvent
 from zwave.nodes import ZWaveNodes
 
 class UhcJsonEncoder(json.JSONEncoder):
@@ -10,6 +11,9 @@ class UhcJsonEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, ZWaveNodes.ZWaveNode):
             return { "id": obj.id, "name": obj.name, "type": obj.type, "level": obj.level }
+
+        if isinstance(obj, ScheduledEvent):
+            return { "id": obj.id, "fromServiceId": obj.fromServiceId, "at": obj.at, "desc": obj.desc, "deferredMsg": obj.deferredMsg }
 
         if isinstance(obj, ZWaveNodes):
             return obj.allNodes()

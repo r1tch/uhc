@@ -7,6 +7,8 @@ from kodi import Kodi
 from paradox import Paradox
 from tcpserver import TcpServer
 from zwave.mios import ZWaveMios
+from schedule import Schedule
+from sunriseset import SunRiseSet
 
 class Controller:
     """Serves as factory, container and coordinator of Service classes"""
@@ -20,6 +22,8 @@ class Controller:
         TcpServer(self, self.config, eventloop)
         Kodi(self, self.config, eventloop)
         Paradox(self, self.config, eventloop)
+        Schedule(self, self.config, eventloop)
+        SunRiseSet(self, self.config, eventloop)
 
     def run(self):
         logging.info("Controller startup")

@@ -118,6 +118,10 @@ if __name__ == "__main__":
     sun = SunCalc(lat=47.48094, lon=19.01664)   # Budapest, Hungary
     when = datetime.now()
     print("x:{}".format(repr(when)))
-    when = datetime(2016,3,27,1,2,3, tzinfo=timezone.utc)
-    print("x:{}".format(repr(when)))
+    #when = datetime(2016,3,27,1,2,3, tzinfo=timezone.utc)
+    #print("x:{}".format(repr(when)))
     print(datetime.fromtimestamp(sun.sunrise(when)), datetime.fromtimestamp(sun.solarnoon(when)), datetime.fromtimestamp(sun.sunset(when)))
+    timestamp = sun.sunrise(when)
+    print(timestamp, datetime.fromtimestamp(timestamp), datetime.fromtimestamp(timestamp).timestamp())
+
+

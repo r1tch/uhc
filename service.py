@@ -7,6 +7,7 @@ class Service:
     def __init__(self, container):
         self.container = container
         self.container.services[self.id()] = self
+        print("added svc {}".format(self.id()))
 
     def broadcast(self, msgDict):
         for service in self.container.services.values():
