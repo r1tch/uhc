@@ -34,7 +34,7 @@ class AutoLight(Service):
     def _batchSetLevel(self, configtag, level):
         shades = self.config.get("autolight", configtag)
         for shade in shades.split(','):
-            self.sendTo("zwave", { "msg": "setLevel", "id": shade, "level": level })
+            self.sendTo("zwave", { "msg": "setLevel", "name": shade, "level": level })
 
     def _stopFlashAlarm(self):
         logging.info("Stopping flashAlarm")

@@ -113,4 +113,14 @@
 # stop flashAlarm:
  {"msg": "stopFlashAlarm", "service": "autolight"}
 
+# test entry/disarm:
+ {"msg": "Disarmed", "service": "autoshade"}
+ {"msg": "EntryDelayStarted", "service": "autolight"}
 
+# test setLevel:
+ { "msg": "setLevel", "name": "Eloszoba", "level": 0, "service": "zwave" }
+ { "msg": "setLevel", "name": "NappaliUtcaRedony", "level": 0, "service": "zwave" }
+
+# test ir:
+ { "msg": "irsend", "remote": "avr", "command": "off", "service": "irtrans" }
+ { "msg": "irsend", "remote": "avr", "command": "on", "service": "irtrans" }

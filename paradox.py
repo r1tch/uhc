@@ -74,8 +74,9 @@ class Paradox(Service):
         eventloop.add_reader(self.serial, self.readSerial)
         self.trouble = ""
 
+        zonenamesStr = config.get('paradox', 'zonenames')
         self.zonenames = {}
-        for x in "1:Bejarat,2:Eloszoba".split(','):
+        for x in zonenamesStr.split(','):
             zoneid,name = x.split(':')
             self.zonenames[int(zoneid)] = name
 
@@ -194,8 +195,8 @@ class Paradox(Service):
         return checksumMatches
 
     def _getZonename(self, zoneId):
-        if zoneId in zonenames:
-            return zonenames[zoneId]
+        if zoneId in self.zonenames:
+            return self.zonenames[zoneId]
 
         return "???"
 

@@ -32,7 +32,7 @@ class IrTrans(Service):
 
             address = self._getAddress()
             msgBytes = struct.pack("=BBHII80s20sB", \
-                    COMMAND_SEND, 0, 0, address, 210, remote, command, 0)
+                    COMMAND_SEND, 0, 0, address, 210, self.remote.encode(), self.command.encode(), 0)
 
             return msgBytes
 
@@ -50,13 +50,11 @@ class IrTrans(Service):
     class ClientProtocol(asyncio.Protocol):
         def __init__(self, irtrans):
             self.irtrans = irtrans
-            self.irtrans.clientProtocol = self
 
         def connection_made(self, transport):
             self.transport = transport
             peername = self.transport.get_extra_info('peername')
-            self.chunkParser.peername = peername
-            logging.info('Kodi: new connection to {}'.format(peername))
+            logging.info('IrTrans: new connection to {}'.format(peername))
             self.irtrans._onConnectionMade(self)
 
         def connection_lost(self, exception):
@@ -65,7 +63,7 @@ class IrTrans(Service):
             self.irtrans._onConnectionLost()
 
         def data_received(self, data):
-            logging.debug("Received: {}", data)
+            logging.debug("Received: {}".format(data))
 
         def write(self, msgBytes):
             self.transport.write(msgBytes)
@@ -89,10 +87,13 @@ class IrTrans(Service):
         asyncio.ensure_future(coroutine)
 
     def _onConnectionMade(self, clientProtocol):
-        if self.clientProtocol:
-            logging.error("Kodi: connected while another connection was up; using new one")
+        logging.debug("IrTrans connected to {}".format(clientProtocol.transport.get_extra_info('peername'))) 
 
+        if self.clientProtocol:
+            logging.error("IrTrans: connected while another connection was up; using new one")
         self.clientProtocol = clientProtocol
+
+        self.clientProtocol.write(struct.pack("=I", 0))
 
     def _onConnectionLost(self):
         self.clientProtocol = None
@@ -136,8 +137,10 @@ class IrTrans(Service):
             logging.info("IrTrans send queue full, dropping {}".format(msgDict))
 
     def _sendCommand(self, command):
-        self.clientProtocol.write(command.asBytes())
+        cmdBytes = command.asBytes()
+        self.clientProtocol.write(cmdBytes)
         self.lastSent = time.time()
+        logging.debug("sent {}: {}".format(len(cmdBytes), cmdBytes))
 
     def _sendQueuedCommand(self):
         if not self.queueHandle:
@@ -154,7 +157,7 @@ class IrTrans(Service):
             self.queueHandle = self.eventloop.call_later(sendDelay, self._sendQueuedCommand)
 
     def _sendDelay(self):
-        sendDelay = self.lastSent_ + self.config.getfloat("irtrans", "sendDelaySecs") - time.time()
+        sendDelay = self.lastSent + self.config.getfloat("irtrans", "sendDelaySecs") - time.time()
         if sendDelay < 0:
             return 0
 

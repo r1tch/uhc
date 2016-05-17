@@ -43,7 +43,8 @@ class AutoShade(Service):
             self.sendTo("schedule", {"msg": "newEvent", "at": closetime, "deferredMsg": {"msg": "flowerClose"}, "desc": "Closing shades in the evening"})
 
         elif msgDict["msg"] == "Disarmed":
-            self._batchUpDown("entryopen", 100)
+            if self._isLight():
+                self._batchUpDown("entryopen", 100)
 
         elif msgDict["msg"] == "Armed":
             self._batchUpDown("exitclose", 0)
@@ -80,13 +81,17 @@ class AutoShade(Service):
     def _batchUpDown(self, shadesConfig, level):
         shades = self.config.get("autoshade", shadesConfig)
         for shade in shades.split(','):
-            self.sendTo("zwave", { "msg": "setLevel", "id": shade, "level": level })
+            self.sendTo("zwave", { "msg": "setLevel", "name": shade, "level": level })
 
-    def _isDark(self, when = time.time()):
+    def _isDark(self, when = 0):
+        if not when:
+            when = time.time()
         return when < self.sunrise or when > self.sunset
 
-    def _isLight(self, when = time.time()):
-        return not self.isDark(when)
+    def _isLight(self, when = 0):
+        if not when:
+            when = time.time()
+        return not self._isDark(when)
 
     def _flowerOpen(self):
         if self.controller.state.atHome:

@@ -25,29 +25,35 @@ class SunCalc:
         self.day = None
         self.time = None
 
-    def sunrise(self, when=datetime.now()):
+    def sunrise(self, when=None):
         """
         return the time of sunrise as a datetime.time object
         when is a datetime.datetime object. If none is given
         a local time zone is assumed (including daylight saving
         if present)
         """
+        if not when:
+            when = datetime.now()
         self.__preptime(when)
         self.__calc()
         return SunCalc.__timefromdecimalday(self.sunrise_t)
 
-    def sunset(self, when=datetime.now()):
+    def sunset(self, when=None):
         """
         returns datetime when sun will set
         """
+        if not when:
+            when = datetime.now()
         self.__preptime(when)
         self.__calc()
         return SunCalc.__timefromdecimalday(self.sunset_t)
 
-    def solarnoon(self, when=datetime.now()):
+    def solarnoon(self, when=None):
         """
         datetime of solar noon
         """
+        if not when:
+            when = datetime.now()
         self.__preptime(when)
         self.__calc()
         return SunCalc.__timefromdecimalday(self.solarnoon_t)

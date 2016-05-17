@@ -15,6 +15,10 @@ class ZWaveMiosRequest:
     def setNodes(self, zwavenodes):
         self.zwavenodes = zwavenodes
 
+    def setLevelByName(self, name, level):
+        node = self.zwavenodes.byName(name)
+        self.setLevel(node.id, level)
+
     def setLevel(self, id, level):
         """Sets level for node with given id; level should be 0-100"""
         # http://ip_address:3480/data_request?id=action&output_format=xml&DeviceNum=6&serviceId=urn:upnp-org:serviceId:SwitchPower1&action=SetTarget&newTargetValue=1
@@ -23,6 +27,7 @@ class ZWaveMiosRequest:
         # services and actions defined in: http://wiki.micasaverde.com/index.php/Luup_UPnP_Variables_and_Actions
         # also see user_data.txt, <Command> and <Parameters> define what we can send
 
+        logging.debug("setLevel for {}, level:{}".format(id, level))
         try:
             node = self.zwavenodes.byId(id)
             value = level

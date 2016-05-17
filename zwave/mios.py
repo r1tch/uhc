@@ -36,11 +36,20 @@ class ZWaveMios(Service):
             response["origMsg"] = msgDict
             fromService.msg(self, response)
         elif msgDict["msg"] == "setLevel":
-            if "id" in msgDict and "level" in msgDict:
-                self.request.setLevel(int(msgDict["id"]), int(msgDict["level"]))
+            if "level" not in msgDict:
+                return
+
+            logging.debug("SETL {}".format(msgDict))
+            if "nodeid" in msgDict:
+                self.request.setLevel(int(msgDict["nodeid"]), int(msgDict["level"]))
+
+            if "name" in msgDict:
+                self.request.setLevelByName(msgDict["name"], int(msgDict["level"]))
         elif msgDict["msg"] == "stopLevelChange":
-            if "id" in msgDict:
-                self.request.stopLevelChange(int(msgDict["id"]))
+            if "nodeid" in msgDict:
+                self.request.stopLevelChange(int(msgDict["nodeid"]))
+            if "name" in msgDict:
+                self.request.stopLevelChangeByName(msgDict["name"])
         elif msgDict["msg"] == "setAllLights":
             if "level" in msgDict:
                 self.request.setAllLights(int(msgDict["level"]))

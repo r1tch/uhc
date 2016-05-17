@@ -90,7 +90,8 @@ class Schedule(Service):
 
     def _triggerEvent(self, event):
         logging.debug("Event triggered: {}".format(event.desc))
-        self.events.remove(event)
+        if event in self.events:
+            del self.events[event]
         self.sendTo(event.fromService.id(), event.deferredMsg)
 
     def _cancelEvent(self, eventId):
@@ -99,17 +100,16 @@ class Schedule(Service):
         self.events[eventId].cancel()
         del self.events[eventId]
 
-    def _secsToNextMidnight(nowTimestamp = int(time.time())):
+    def _secsToNextMidnight(nowTimestamp = 0):
+
+        if not nowTimestamp:
+            nowTimestamp = int(time.time())
 
         now = datetime.datetime.fromtimestamp(nowTimestamp)
         todayMidnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
         nextMidnight = todayMidnight + datetime.timedelta(days=1)
 
         return nextMidnight.timestamp() - nowTimestamp
-
-    def hourminToTimestamp(hour, minute):       # TODO is this used? should always use configable values...
-        timeDt = datetime.datetime.now().replace(hour=hour, minute=minute, second=0, microsecond=0)
-        return timeDt.timestamp()
 
 
 if __name__ == "__main__":
