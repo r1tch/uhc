@@ -9,6 +9,7 @@ class Config(configparser.ConfigParser):
         super().__init__()
         self._set_default_values()
         self.read(local_dir + "/config.ini")
+        self._sanity_checks()
 
     def hhmmts(self, section, key):
         """Converts a hh:mm value into UNIX timestamp"""
@@ -19,6 +20,24 @@ class Config(configparser.ConfigParser):
         
         timeDt = datetime.datetime.now().replace(hour=int(hhmm[0]), minute=int(hhmm[1]), second=0, microsecond=0)
         return timeDt.timestamp()
+
+    def _sanity_checks(self):
+        if self.getint("remote", "port") < 1 or self.getint("remote", "port") > 65535:
+            logging.error("[remote] port invalid")
+            self.set("remote", "port", "8888")
+
+        if self.getfloat("autolight", "flashAlarmOnOffDelaySecs") < 1:
+            logging.error("[autolight] flashAlarmOnOffDelaySecs too small")
+            self.set("autolight", "flashAlarmOnOffDelaySecs", "2")
+
+        if self.getfloat("kodi", "reconnectTimeout") < 1:
+            logging.error("[kodi] reconnectTimeout too small")
+            self.set("kodi", "reconnectTimeout", "5")
+
+        if self.getfloat("mios", "update_frequency_secs") < 1:
+            logging.error("[mios] update_frequency_secs too small")
+            self.set("mios", "update_frequency_secs", "5")
+        
 
     def _set_default_values(self):
         self.add_section("logging")
@@ -40,7 +59,7 @@ class Config(configparser.ConfigParser):
 
         self.add_section("paradox")
         self.set("paradox", "device", "/dev/ttyAMA0")  # RPi default
-        self.set("paradox", "zonenames", "1:BejÃ¡rat,2:ElÅszoba,3:Nappali,4:NappaliÃveg,5:HÃ¡lÃ³,6:DolgozÃ³,7:Gyerekszoba,8:FÃ¼st,9:SzirÃ©na")
+        self.set("paradox", "zonenames", "1:Bejárat,2:Előszoba,3:Nappali,4:Nappaliüveg,5:Háló,6:Dolgozó,7:Gyerekszoba,8:Füst,9:Sziréna")
 
         self.add_section("location")
         self.set("location", "city", "Budapest")
@@ -61,4 +80,17 @@ class Config(configparser.ConfigParser):
         self.set("autoshade", "duskclose", "NappaliUtcaRedony,KonyhaRedony,HaloRedony")
         self.set("autoshade", "nightclose", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,LiloRedony")
         self.set("autoshade", "nightclosetime", "3:00")
+
+        self.add_section("autolight")
+        self.set("autolight", "entrylights", "Eloszoba")
+        self.set("autolight", "flashAlarmOnOffDelaySecs", "2")
+        self.set("autolight", "flashAlarmDelaySecs", "15")
+        self.set("autolight", "flashAlarmPreflash", "Eloszoba")
+        self.set("autolight", "flashAlarmFull", "Eloszoba,NappaliEbedlo,NappaliKanape,Dolgozo")
+        
+        self.add_section("irtrans")
+        self.set("irtrans", "host", "localhost")
+        self.set("irtrans", "sendDelaySecs", "0.15")
+        self.set("irtrans", "maxQueueLength", "10")
+        self.set("irtrans", "reconnectTimeout", "5")
 

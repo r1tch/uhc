@@ -40,7 +40,7 @@ class AutoShade(Service):
                 self.sendTo("schedule", {"msg": "newEvent", "at": opentime, "deferredMsg": {"msg": "flowerOpen"}, "desc": "Opening the shades in the morning"})
 
             closetime = self.sunset - random.randint(0, 90*60)
-            self.sendTo("schedule", {"msg": "newEvent", "at": closetime, "deferredMsg": {"msg": "flowerClose"}, "desc": "Closing the shades in the evening"})
+            self.sendTo("schedule", {"msg": "newEvent", "at": closetime, "deferredMsg": {"msg": "flowerClose"}, "desc": "Closing shades in the evening"})
 
         elif msgDict["msg"] == "Disarmed":
             self._batchUpDown("entryopen", 100)

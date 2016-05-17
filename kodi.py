@@ -49,11 +49,9 @@ class Kodi(Service):
     def __init__(self, controller, config, eventloop):
         super().__init__(controller)
         self.eventloop = eventloop
-        self.connection = None
+        self.config = config
+        self.clientProtocol = None
 
-        self.host = config.get("kodi", "host")
-        self.port = config.getint("kodi", "port")
-        self.reconnectTimeout = config.getint("kodi", "reconnectTimeout")
         self._initiateConnection()
 
     #@override
@@ -66,7 +64,7 @@ class Kodi(Service):
             return
 
         msgDict["jsonrpc"] = "2.0"
-        if not self.connection:
+        if not self.clientProtocol:
             logging.error("Kodi: not sending msg while not connected")
             return
 
@@ -74,24 +72,27 @@ class Kodi(Service):
             del msgDict["connection"]       # only element not JSON serializable; jsonrpc uses "id" property to ID connections
         jsonStr = UhcJsonEncoder().encode(msgDict)
         logging.debug("Sending {}".format(jsonStr))
-        self.connection.write(jsonStr)
+        self.clientProtocol.write(jsonStr)
 
     def _initiateConnection(self):
-        coroutine = self.eventloop.create_connection(lambda: Kodi.ClientProtocol(self), self.host, self.port)
+        host = self.config.get("kodi", "host")
+        port = self.config.getint("kodi", "port")
+        coroutine = self.eventloop.create_connection(lambda: Kodi.ClientProtocol(self), host, port)
         asyncio.ensure_future(coroutine)
 
-    def _onConnectionMade(self, connection):
-        if self.connection:
+    def _onConnectionMade(self, clientProtocol):
+        if self.clientProtocol:
             logging.error("Kodi: connected while another connection was up; using new one")
 
-        self.connection = connection
+        self.clientProtocol = clientProtocol
 
     def _onConnectionLost(self):
-        self.connection = None
+        self.clientProtocol = None
         self._delayedReconnect()
 
     def _delayedReconnect(self):
-        self.eventloop.call_later(self.reconnectTimeout, self._initiateConnection)
+        reconnectTimeout = self.config.getint("kodi", "reconnectTimeout")
+        self.eventloop.call_later(reconnectTimeout, self._initiateConnection)
 
 
     def jsonReceived(self, jsonData):

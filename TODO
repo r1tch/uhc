@@ -75,24 +75,24 @@
   - SunRiseSet -- service, reports timestamps on new days - DONE
   - Schedule - DONE
   - automators:
-    - shades - AutoShade
-      - sunset down: sunset + 15mins, to be dark enough
-      - sunrise up: sunrise - 15 mins
+    - shades - AutoShade - DONE
     - AutoLight
-      - entry: light up entry hall
-      - flashalarm on/off via msg
-    - sleep detection (SleepSecurity)
-    - etc
-  - IR module - should be easy with udpirsend, soldering needed first NAH! use irtrans, write client... should be easy
+      - entry: light up entry hall - DONE
+      - flashalarm on/off via msg - DONE
+    - sleep detection (SleepSecurity) -- NO, unnecessary! (overall, if any, just display movement & paradox status in Android client)
+  - IR module - should be easy with udpirsend, soldering needed first NAH! use irtrans, write client... should be easy - DONE
   - HiFi control (on-off, switch to proper source, volume up/down, maybe mute?)
+    - off when asleep and left home
   - XBMC android control
-  - heating control
+  - heating control -- unnec, verbatim IR instructions!
   - password
   - List of lights with on-off switch
     - LATER: long-press for dimmers, exact settings
     - LATER: icon for dimmer & on-off
   - List of shades - 3 buttons
     - LATER: long-press for level setting
+  - Show if connected (icon)
+  - Pop up window if flashAlarming
   - all other modules...
   - LATER: config option: Expert Mode
     - allows for deletion of schedules (otherwise just print??)
@@ -101,6 +101,16 @@
   {"msg": "gotNodes", "fromService": "zwave", "nodes": [{"id": 1, "level": 0, "name": "ZWave", "type": "ZWaveNetwork"}, {"id": 2, "level": 0, "name": "_Scene Controller", "type": "SceneController"}, {"id": 4, "level": 0, "name": "NappaliEbedlo", "type": "BinaryLight"}, {"id": 5, "level": 0, "name": "NappaliKanape", "type": "BinaryLight"}, {"id": 6, "level": 100, "name": "Konyha", "type": "BinaryLight"}, {"id": 7, "level": 0, "name": "Dolgozo", "type": "BinaryLight"}, {"id": 8, "level": 0, "name": "Eloszoba", "type": "BinaryLight"}, {"id": 11, "level": 0, "name": "Furdonagy", "type": "BinaryLight"}, {"id": 12, "level": 0, "name": "Furdokad", "type": "DimmableLight"}, {"id": 13, "level": 0, "name": "Halo", "type": "BinaryLight"}, {"id": 14, "level": 100, "name": "HaloRedony", "type": "WindowCovering"}, {"id": 15, "level": 100, "name": "DolgozoRedony", "type": "WindowCovering"}, {"id": 16, "level": 0, "name": "LiloRedony", "type": "WindowCovering"}, {"id": 18, "level": 0, "name": "KonyhaRedony", "type": "WindowCovering"}, {"id": 19, "level": 100, "name": "NappaliUtcaRedony", "type": "WindowCovering"}, {"id": 20, "level": 0, "name": "NappaliErkelyRedony", "type": "WindowCovering"}, {"id": 21, "level": 100, "name": "NappaliKertRedony", "type": "WindowCovering"}, {"id": 22, "level": 100, "name": "NappaliOldalRedony", "type": "WindowCovering"}, {"id": 23, "level": 0, "name": "ErkelyLampa", "type": "BinaryLight"}, {"id": 24, "level": 0, "name": "ZTH100 Controller", "type": "SceneController"}, {"id": 25, "level": 0, "name": "Lilo", "type": "DimmableLight"}, {"id": 26, "level": 100, "name": "Vaszon", "type": "WindowCovering"}]}
 {"changedLevels": {"6": 0}, "msg": "changedLevels", "fromService": "zwave"}
 
+# testing kodi comm:
  {"service": "kodi", "jsonrpc": "2.0", "method": "Playlist.GetPlaylists"}
 
+# get scheduled events:
  {"msg": "getScheduledEvents", "service": "schedule"}
+
+# start flashAlarm:
+ {"msg": "initiateFlashAlarm", "service": "autolight"}
+
+# stop flashAlarm:
+ {"msg": "stopFlashAlarm", "service": "autolight"}
+
+

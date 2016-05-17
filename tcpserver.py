@@ -64,12 +64,19 @@ class TcpServer(Service):
 
     def __init__(self, controller, config, eventloop):
         super().__init__(controller)
+        self.config = config
+        self.eventloop = eventloop
+
         self.connections = set()
         self.nextid = 1
-        coroutine = eventloop.create_server(lambda: TcpServer.RemoteProtocol(self), port=config.getint("remote", "port"))
-        asyncio.ensure_future(coroutine, loop=eventloop)  # starts server creation in the background
+
+        self.eventloop.call_later(2, self._startListening)   # delayed listen, not to connect in the middle of service initialization
+ 
+    def _startListening(self):
+        coroutine = self.eventloop.create_server(lambda: TcpServer.RemoteProtocol(self), port=self.config.getint("remote", "port"))
+        asyncio.ensure_future(coroutine, loop=self.eventloop)  # starts server creation in the background
         # note: sync version would be: self.eventloop.run_until_complete(coroutine)
-  
+
     def get_nextid(self):
         nextid = self.nextid
         self.nextid += 1
@@ -117,6 +124,9 @@ class TcpServer(Service):
         self.connections.add(connection)
         msgDict = { "msg": "newConnection", "connection": connection, "id": connection.connectionid }
         self.broadcast(msgDict)
+
+        stateStr = UhcJsonEncoder().encode({ "msg": "state", "state": self.controller.state.dictState() })
+        self._writeTo(connection, stateStr)
 
     def jsonReceived(self, connection, jsonData):
         if "service" not in jsonData:
