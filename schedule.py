@@ -92,7 +92,7 @@ class Schedule(Service):
         logging.debug("Event triggered: {}".format(event.desc))
         if event in self.events:
             del self.events[event]
-        self.sendTo(event.fromService.id(), event.deferredMsg)
+        self.sendTo(event.fromServiceId, event.deferredMsg)
 
     def _cancelEvent(self, eventId):
         if eventId not in self.events:

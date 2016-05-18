@@ -66,7 +66,12 @@ class ZWaveMiosStatusUpdate:
         host = self.config.get("mios", "host")
         url = "http://{}{}".format(host, ZWaveMiosStatusUpdate.STATUS_URL)
         # print("requesting " + url)
-        resp = requests.get(url)
+        try:
+            resp = requests.get(url)
+        except requests.exceptions.ConnectionError:
+            logging.info("Mios seems to be refusing connections")
+            return
+
         # print("response code:" + str(resp.status_code))
         json = resp.json()
         self.eventloop.call_soon_threadsafe(self.getStatusDone, json)

@@ -73,7 +73,7 @@ class Config(configparser.ConfigParser):
         self.set("autoshade", "floweropen", "NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony")
         self.set("autoshade", "flowerclose", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony,LiloRedony")
         self.set("autoshade", "summerfloweropentime", "15:00") # keep the house cool
-        self.set("autoshade", "morningopen", "NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony")
+        self.set("autoshade", "morningopen", "NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,DolgozoRedony")
         self.set("autoshade", "morningopenzone", "3")
         self.set("autoshade", "morningopenfrom", "6:00")
         self.set("autoshade", "morningopento", "12:00")

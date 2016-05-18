@@ -82,9 +82,14 @@
     - sleep detection (SleepSecurity) -- NO, unnecessary! (overall, if any, just display movement & paradox status in Android client)
   - IR module - should be easy with udpirsend, soldering needed first NAH! use irtrans, write client... should be easy - DONE
   - HiFi control (on-off, switch to proper source, volume up/down, maybe mute?)
-    - off when asleep and left home
-  - XBMC android control
-  - heating control -- unnec, verbatim IR instructions!
+    - off when leaving home
+  - Android
+    - crash fix
+    - XBMC control
+    - tablet screen
+    - heating control
+    - hifi & co
+    - scene buttons
   - password
   - List of lights with on-off switch
     - LATER: long-press for dimmers, exact settings
