@@ -37,7 +37,7 @@ class AutoShade(Service):
                 self.sendTo("schedule", {"msg": "newEvent", "at": self.config.hhmmts("autoshade", "summerfloweropentime"), "deferredMsg": {"msg": "flowerOpen"}, "desc": "Opening shades only in the afternoon to keep the house cool"})
             else:
                 opentime = self.sunrise + random.randint(0, 90*60)
-                self.sendTo("schedule", {"msg": "newEvent", "at": opentime, "deferredMsg": {"msg": "flowerOpen"}, "desc": "Opening the shades in the morning"})
+                self.sendTo("schedule", {"msg": "newEvent", "at": opentime, "deferredMsg": {"msg": "flowerOpen"}, "desc": "Opening shades in the morning"})
 
             closetime = self.sunset - random.randint(0, 90*60)
             self.sendTo("schedule", {"msg": "newEvent", "at": closetime, "deferredMsg": {"msg": "flowerClose"}, "desc": "Closing shades in the evening"})
@@ -46,14 +46,14 @@ class AutoShade(Service):
             if self._isLight():
                 self._batchUpDown("entryopen", 100)
 
-        elif msgDict["msg"] == "Armed":
+        elif msgDict["msg"] == "ExitDelayStarted":
             self._batchUpDown("exitclose", 0)
             openDelay = random.randint(60*15, 60*60)
             now = time.time()
             threePM = self.config.hhmmts("autoshade", "summerfloweropentime")
             openTimestamp = now + openDelay
             if self._isLight(openTimestamp) and (not self._isSummerTime() or now > threePM):
-                self.eventloop.call_later(openDelay, self._flowerOpen)
+                self.sendTo("schedule", {"msg": "newEvent", "at": openTimestamp, "deferredMsg": {"msg": "flowerClose"}, "desc": "Closing shades in the evening [after leave]"})
         
         elif msgDict["msg"] == "ZoneOpen":
             now = time.time()
@@ -107,19 +107,19 @@ class AutoShade(Service):
             return
         if self._isLight():
             return
-        self._batchUpDown("flowerclose", 100)
+        self._batchUpDown("flowerclose", 0)
 
     def _duskClose(self):
         if not self.controller.state.atHome:
             logging.debug("duskClose: not closing, not at home")
             return
-        self._batchUpDown("duskclose", 100)
+        self._batchUpDown("duskclose", 0)
 
     def _nightClose(self):
         if not self.controller.state.atHome:
             logging.debug("nightClose: not closing, not at home")
             return
-        self._batchUpDown("nightclose", 100)
+        self._batchUpDown("nightclose", 0)
 
     def _duskTime(self):
         return self.sunset - 15*60;

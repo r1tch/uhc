@@ -25,6 +25,9 @@ class AutoLight(Service):
         if msgDict["msg"] == "EntryDelayStarted":
             self._batchSetLevel("entrylights", 100)
 
+        if msgDict["msg"] == "ExitDelayStarted":
+            self.sendTo("zwave", { "msg": "setAllLights", "level": 0 })
+
         elif msgDict["msg"] == "initiateFlashAlarm":
             self._initiateFlashAlarm()
 

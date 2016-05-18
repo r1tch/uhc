@@ -119,6 +119,8 @@
  {"msg": "stopFlashAlarm", "service": "autolight"}
 
 # test entry/disarm:
+ {"msg": "Armed", "service": "autolight"}
+ {"msg": "Armed", "service": "autoshade"}
  {"msg": "Disarmed", "service": "autoshade"}
  {"msg": "EntryDelayStarted", "service": "autolight"}
 
