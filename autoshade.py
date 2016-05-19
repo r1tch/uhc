@@ -58,8 +58,10 @@ class AutoShade(Service):
         elif msgDict["msg"] == "ZoneOpen":
             now = time.time()
             if (msgDict["zoneid"] == self.config.getint("autoshade", "morningopenzone") and
-                    self._isDark() and
+                    self._isLight() and
                     self.controller.state.atHome and 
+                    not self.controller.state.guestHost and 
+                    not self.morningOpenDone and
                     self.config.hhmmts("autoshade", "morningopenfrom") < now and
                     self.config.hhmmts("autoshade", "morningopento") > now):
                 self._batchUpDown("morningopen", 100)

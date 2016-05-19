@@ -77,8 +77,8 @@ class Config(configparser.ConfigParser):
         self.set("autoshade", "morningopenzone", "3")
         self.set("autoshade", "morningopenfrom", "6:00")
         self.set("autoshade", "morningopento", "12:00")
-        self.set("autoshade", "duskclose", "NappaliUtcaRedony,KonyhaRedony,HaloRedony")
-        self.set("autoshade", "nightclose", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,LiloRedony")
+        self.set("autoshade", "duskclose", "NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony")
+        self.set("autoshade", "nightclose", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,LiloRedony,DolgozoRedony")
         self.set("autoshade", "nightclosetime", "3:00")
 
         self.add_section("autolight")
@@ -91,6 +91,12 @@ class Config(configparser.ConfigParser):
         self.add_section("irtrans")
         self.set("irtrans", "host", "localhost")
         self.set("irtrans", "sendDelaySecs", "0.15")
-        self.set("irtrans", "maxQueueLength", "10")
+        self.set("irtrans", "maxQueueLength", "20")
         self.set("irtrans", "reconnectTimeout", "5")
+
+        self.add_section("hifi")
+        self.set("hifi", "remote", "avr")
+        self.set("hifi", "mediaSourceCommand", "vid2")
+
+
 

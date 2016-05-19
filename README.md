@@ -1,16 +1,20 @@
 
 
+TODO: describe services and json comm
+
+Drawback: "msg" part should also be unique, due to broadcast support.
 
 TODO: fix formatting
 
 ## Example Commands
 
-(This should be a full list of accepted msgs.)
+(TODO: this should be a full list of accepted msgs.)
 
 { "service": "zwave", "msg": "getNodes" }
 { "service": "zwave", "msg": "setLevel", "id": "13", "level": "100" }
 { "service": "zwave", "msg": "stopLevelChange", "id": "12" }
 { "service": "zwave", "msg": "setAllLights", "level": "0" }
+
 
 
 ## Example Updates

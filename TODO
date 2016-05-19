@@ -79,7 +79,9 @@
     - AutoLight
       - entry: light up entry hall - DONE
       - flashalarm on/off via msg - DONE
-    - sleep detection (SleepSecurity) -- NO, unnecessary! (overall, if any, just display movement & paradox status in Android client)
+    - sleep detection (SleepSecurity) -- !!!
+      - well, would be nice, to only roll down at night if asleep...
+      - setting guest mode here too !!
   - IR module - should be easy with udpirsend, soldering needed first NAH! use irtrans, write client... should be easy - DONE
   - HiFi control (on-off, switch to proper source, volume up/down, maybe mute?)
     - off when leaving home
@@ -90,6 +92,7 @@
     - heating control
     - hifi & co
     - scene buttons
+    - state feedback
   - password
   - List of lights with on-off switch
     - LATER: long-press for dimmers, exact settings
@@ -131,3 +134,8 @@
 # test ir:
  { "msg": "irsend", "remote": "avr", "command": "off", "service": "irtrans" }
  { "msg": "irsend", "remote": "avr", "command": "on", "service": "irtrans" }
+
+# test hifi:
+ { "msg": "hifiOn", "service": "hifi" }
+ { "msg": "hifiOff", "service": "hifi" }
+ { "msg": "setMediaSource", "service": "hifi" }

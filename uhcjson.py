@@ -63,6 +63,6 @@ class UhcJsonChunkParser:
             return False
 
         self.buf = str()
-        logging.info("received {}: {}".format(self.peername, jsonData))
+        #logging.debug("received {}: {}".format(self.peername, jsonData))
         self.jsonReceiver.jsonReceived(jsonData)
 
