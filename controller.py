@@ -12,6 +12,7 @@ from paradox import Paradox
 from tcpserver import TcpServer
 from zwave.mios import ZWaveMios
 from schedule import Schedule
+from sleepsense import SleepSense
 from state import State
 from sunriseset import SunRiseSet
 
@@ -31,6 +32,7 @@ class Controller:
         Kodi(self, self.config, eventloop)
         Paradox(self, self.config, eventloop)
         Schedule(self, self.config, eventloop)
+        SleepSense(self, self.config, eventloop)
         SunRiseSet(self, self.config, eventloop)
         ZWaveMios(self, self.config, eventloop)
         # let's make this last:

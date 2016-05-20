@@ -98,5 +98,7 @@ class Config(configparser.ConfigParser):
         self.set("hifi", "remote", "avr")
         self.set("hifi", "mediaSourceCommand", "vid2")
 
-
+        self.add_section("sleepsense")
+        self.set("sleepsense", "bedroomzones", "5,7")
+        self.set("sleepsense", "fallAsleepTimeMinutes", "30")
 

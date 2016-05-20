@@ -22,6 +22,12 @@ class HiFi(Service):
         elif msgDict["msg"] == "ExitDelayStarted":
             self._sendCommand("off")
 
+        elif msgDict["msg"] == "Awakened":
+            self._sendCommand("on")
+
+        elif msgDict["msg"] == "Asleep":
+            self._sendCommand("off")
+
         elif msgDict["msg"] == "hifiOn":
             self._sendCommand("on")
 

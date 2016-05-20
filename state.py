@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# just storing the state; continuous updates are sent via individual msgs
+# (eg, ExitDelayStarted when about to leave, Armed when left home)
 class State:
     """Common object accessible by all services, to store current states"""
     def __init__(self):

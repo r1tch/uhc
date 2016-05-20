@@ -79,12 +79,11 @@
     - AutoLight
       - entry: light up entry hall - DONE
       - flashalarm on/off via msg - DONE
-    - sleep detection (SleepSecurity) -- !!!
+    - sleep detection (SleepSecurity) -- !!! - TESTING
       - well, would be nice, to only roll down at night if asleep...
       - setting guest mode here too !!
   - IR module - should be easy with udpirsend, soldering needed first NAH! use irtrans, write client... should be easy - DONE
-  - HiFi control (on-off, switch to proper source, volume up/down, maybe mute?)
-    - off when leaving home
+  - HiFi control (on-off, switch to proper source, volume up/down, maybe mute?) - DONE
   - Android
     - crash fix
     - XBMC control
@@ -93,6 +92,9 @@
     - hifi & co
     - scene buttons
     - state feedback
+    - disable autoshade until next exit
+      - -> aka guest mode
+      - icon feedback (sthg along "no auto" / manual)
   - password
   - List of lights with on-off switch
     - LATER: long-press for dimmers, exact settings
