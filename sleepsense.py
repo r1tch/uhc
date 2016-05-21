@@ -19,16 +19,25 @@ class SleepSense(Service):
     def msg(self, fromService, msgDict):
         if msgDict["msg"] == "ZoneOpen":
             self._zoneOpen(msgDict["zoneid"])
+        if msgDict["msg"] == "ExitDelayStarted":
+            self._cancelAsleepTimer()
 
+    def _cancelAsleepTimer(self):
+        if not self.asleepTimer:
+            return
+
+        self.asleepTimer.cancel()
+        self.asleepTimer = None
 
     def _zoneOpen(self, zoneid):
+        if not self.controller.state.atHome:
+            return
+
         if not self._isBedroom(zoneid) and self.controller.state.asleep:
+            self._cancelAsleepTimer()
             self.controller.state.asleep = False
             self.broadcast({"msg": "Awakened"})
             logging.info("Woke up...")
-            if self.asleepTimer:
-                self.asleepTimer.cancel()
-                self.asleepTimer = None
             return
             
         if self._isBedroom(zoneid) and not self.controller.state.asleep and not self.asleepTimer:
