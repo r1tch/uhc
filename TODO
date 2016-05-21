@@ -96,6 +96,12 @@
       - -> aka guest mode
       - icon feedback (sthg along "no auto" / manual)
   - password
+    - md5-based auth: random string as challenge; append pw, send hash back
+    - Android:
+      - set pw preference
+        - based on auth request, detect remote host
+        - disable option if not on local network
+  - preferences can be sent to Uhc -> RemoteConfig service; uses "ro" and "rw" to make FS writable
   - List of lights with on-off switch
     - LATER: long-press for dimmers, exact settings
     - LATER: icon for dimmer & on-off
