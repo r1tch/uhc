@@ -23,7 +23,7 @@ class TcpServer(Service):
             peername = self.transport.get_extra_info('peername')
             self.chunkParser.peername = peername
             print('TcpServer: connection from {}'.format(peername))
-            if TcpServer.RemoteProtocol.is_local(peername[0]):
+            if TcpServer.RemoteProtocol.is_local(peername[0]) or True:   ## TODO password auth!!
                 logging.info('TcpServer: local connection from {}'.format(peername))
                 self.tcpServer._onNewConnection(self)
             else:

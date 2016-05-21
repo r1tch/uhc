@@ -18,6 +18,7 @@ class AutoShade(Service):
         self.sunrise = 0
         self.sunset = 0
         self.morningOpenDone = False
+        self.recentFlowerCloseTime = 0
 
     #@override
     def id(self):
@@ -41,6 +42,7 @@ class AutoShade(Service):
 
             closetime = self.sunset - random.randint(0, 90*60)
             self.sendTo("schedule", {"msg": "newEvent", "at": closetime, "deferredMsg": {"msg": "flowerClose"}, "desc": "Closing shades in the evening"})
+            self.recentFlowerCloseTime = closetime
 
         elif msgDict["msg"] == "Disarmed":
             if self._isLight():
@@ -53,7 +55,7 @@ class AutoShade(Service):
             threePM = self.config.hhmmts("autoshade", "summerfloweropentime")
             openTimestamp = now + openDelay
             if self._isLight(openTimestamp) and (not self._isSummerTime() or now > threePM):
-                self.sendTo("schedule", {"msg": "newEvent", "at": openTimestamp, "deferredMsg": {"msg": "flowerClose"}, "desc": "Closing shades in the evening [after leave]"})
+                self.sendTo("schedule", {"msg": "newEvent", "at": openTimestamp, "deferredMsg": {"msg": "flowerOpen"}, "desc": "Reopening shades after leave"})
         
         elif msgDict["msg"] == "ZoneOpen":
             now = time.time()
@@ -100,15 +102,24 @@ class AutoShade(Service):
             logging.debug("flowerOpen: not opening, back home again")
             return
         if self._isDark():
+            logging.debug("flowerOpen: not opening, it's dark outside")
             return
+
+        if self.recentFlowerCloseTime and time.time() > self.recentFlowerCloseTime:
+            logging.debug("flowerOpen: not opening, already past recent close time")
+            return
+
         self._batchUpDown("floweropen", 100)
 
     def _flowerClose(self):
         if self.controller.state.atHome:
             logging.debug("flowerClose: not closing, back home again")
             return
+
         if self._isLight():
+            logging.debug("flowerOpen: not opening, it's lit outside")
             return
+
         self._batchUpDown("flowerclose", 0)
 
     def _duskClose(self):
