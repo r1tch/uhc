@@ -33,11 +33,12 @@ class SleepSense(Service):
         if not self.controller.state.atHome:
             return
 
-        if not self._isBedroom(zoneid) and self.controller.state.asleep:
+        if not self._isBedroom(zoneid):
             self._cancelAsleepTimer()
-            self.controller.state.asleep = False
-            self.broadcast({"msg": "Awakened"})
-            logging.info("Woke up...")
+            if self.controller.state.asleep:
+                self.controller.state.asleep = False
+                self.broadcast({"msg": "Awakened"})
+                logging.info("Woke up...")
             return
             
         if self._isBedroom(zoneid) and not self.controller.state.asleep and not self.asleepTimer:
