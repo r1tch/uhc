@@ -45,7 +45,7 @@ class AutoShade(Service):
             self.recentFlowerCloseTime = closetime
 
         elif msgDict["msg"] == "Disarmed":
-            if self._isLight():
+            if self._isLight() and time.time() < self.recentFlowerCloseTime:
                 self._batchUpDown("entryopen", 100)
 
         elif msgDict["msg"] == "ExitDelayStarted":
