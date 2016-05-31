@@ -85,8 +85,10 @@
   - IR module - should be easy with udpirsend, soldering needed first NAH! use irtrans, write client... should be easy - DONE
   - HiFi control (on-off, switch to proper source, volume up/down, maybe mute?) - DONE
   - Android
-    - crash fix
+    - crash fix - DONE
+    - crash fix #2
     - XBMC control
+    - connectivity feedback via icon
     - tablet screen
     - heating control
     - hifi & co
