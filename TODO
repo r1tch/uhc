@@ -31,12 +31,15 @@
   - XBMC
     - osmc2 - play music library from stora
     - remote control of osmc/kodi
-  - IR -- lirc! No lib needed, proto is dead simple
-  - Paradox
-  - AutoShade -- using entry/exit/sunrise/sunset
-  - SleepSecurity -- sleep detection, etc
-  - Media -- movie mode & co
+  - IR -- lirc! No lib needed, proto is dead simple - DONE
+  - Paradox - DONE
+  - AutoShade -- using entry/exit/sunrise/sunset - DONE
+  - SleepSecurity -- sleep detection, etc - DONE
+  - Media -- movie mode & co - DONE
 
+
+  !!!!!!!!!! TODO: double-line json triggers unhandled extra data error! !!!!!
+  !!!!!!!!!! TODO: also propagate custom 'id', so client can mark what the request was...? Do we need this??
 
   ----- Android Client
   - Names: UHC - Universal Home Control -- hlome, hyome, etc... Why? Needed a .com address :)
@@ -89,14 +92,15 @@
     - crash fix #2
     - XBMC control
     - connectivity feedback via icon
-    - tablet screen
-    - heating control
-    - hifi & co
-    - scene buttons
+    - A/C control
+    - hifi & projector buttons
     - state feedback
+    - tablet screen
+    - scene buttons
     - disable autoshade until next exit
       - -> aka guest mode
       - icon feedback (sthg along "no auto" / manual)
+  - save state into /tmp for restarts (simply as json, re-read on startup)
   - password
     - md5-based auth: random string as challenge; append pw, send hash back
     - Android:

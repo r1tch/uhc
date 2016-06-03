@@ -9,6 +9,7 @@ class HiFi(Service):
         super().__init__(controller)
         self.config = config
         self.eventloop = eventloop
+        self.controller = controller
 
     #@override
     def id(self):
@@ -17,22 +18,22 @@ class HiFi(Service):
     #@override
     def msg(self, fromService, msgDict):
         if msgDict["msg"] == "Disarmed":
-            self._sendCommand("on")
+            self._hifiOn()
 
         elif msgDict["msg"] == "ExitDelayStarted":
-            self._sendCommand("off")
+            self._hifiOff()
 
         elif msgDict["msg"] == "Awakened":
-            self._sendCommand("on")
+            self._hifiOn()
 
         elif msgDict["msg"] == "Asleep":
-            self._sendCommand("off")
+            self._hifiOff()
 
         elif msgDict["msg"] == "hifiOn":
-            self._sendCommand("on")
+            self._hifiOn()
 
         elif msgDict["msg"] == "hifiOff":
-            self._sendCommand("off")
+            self._hifiOff()
 
         elif msgDict["msg"] == "hifiVolUp":
             self._sendCommand("volup")
@@ -43,6 +44,14 @@ class HiFi(Service):
         elif msgDict["msg"] == "setMediaSource":
             command = self.config.get("hifi", "mediaSourceCommand")
             self._sendCommand(command)
+
+    def _hifiOn(self):
+            self._sendCommand("on")
+            self.controller.state.hifiOn = True
+
+    def _hifiOff(self):
+            self._sendCommand("off")
+            self.controller.state.hifiOn = False
 
     def _sendCommand(self, command):
         remote = self.config.get("hifi", "remote")
