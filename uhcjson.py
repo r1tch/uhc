@@ -45,17 +45,17 @@ class UhcJsonChunkParser:
         try:
             jsonData = json.loads(self.buf)
         except json.decoder.JSONDecodeError as e:
-            if e.msg.startswith("Expecting "):         # keep the buffer, more might come
+            if e.msg.startswith("Expecting "):          # keep the buffer, more might come
                 return False
-            if e.msg.startswith("Unterminated "):      # keep the buffer, more might come
+            if e.msg.startswith("Unterminated "):       # keep the buffer, more might come
                 return False
-            if e.msg.startswith("Extra data: "):       # we have a full object, let's retry parsing it!
+            if e.msg == "Extra data":                   # we have a full object, let's retry parsing it!
                 remainder = self.buf[e.pos:]
                 self.buf = self.buf[:e.pos]
                 self._decodeObjectFromBuf()
                 self.buf = remainder
                 return True
-            logging.error('unhandled JSONDecodeError: {}'.format(e))
+            logging.error('unhandled JSONDecodeError: msg: "{}" {}'.format(e.msg, e))
             raise e
         except ValueError as e:
             logging.error("irrecoverable JSON error: {}, exception: {}".format(message, e))
