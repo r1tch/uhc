@@ -63,7 +63,8 @@ class IrTrans(Service):
             self.irtrans._onConnectionLost()
 
         def data_received(self, data):
-            logging.debug("Received: {}".format(data))
+            #logging.debug("Received: {}".format(data))
+            pass
 
         def write(self, msgBytes):
             self.transport.write(msgBytes)
@@ -140,7 +141,7 @@ class IrTrans(Service):
         cmdBytes = command.asBytes()
         self.clientProtocol.write(cmdBytes)
         self.lastSent = time.time()
-        logging.debug("sent {}: {}".format(len(cmdBytes), cmdBytes))
+        # logging.debug("sent {}: {}".format(len(cmdBytes), cmdBytes))
 
     def _sendQueuedCommand(self):
         if not self.queueHandle:
