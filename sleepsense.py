@@ -19,7 +19,7 @@ class SleepSense(Service):
     def msg(self, fromService, msgDict):
         if msgDict["msg"] == "ZoneOpen":
             self._zoneOpen(msgDict["zoneid"])
-        if msgDict["msg"] == "ExitDelayStarted":
+        if msgDict["msg"] == "ExitDelayStarted" or msgDict["msg"] == "Armed":
             self._cancelAsleepTimer()
 
     def _cancelAsleepTimer(self):
