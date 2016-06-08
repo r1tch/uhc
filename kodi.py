@@ -85,6 +85,7 @@ class Kodi(Service):
             logging.error("Kodi: connected while another connection was up; using new one")
 
         self.clientProtocol = clientProtocol
+        self.broadcast({ "msg": "kodiReconnected" })
 
     def _onConnectionLost(self):
         self.clientProtocol = None

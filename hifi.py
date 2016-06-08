@@ -8,7 +8,6 @@ class HiFi(Service):
     def __init__(self, controller, config, eventloop):
         super().__init__(controller)
         self.config = config
-        self.eventloop = eventloop
         self.controller = controller
 
     #@override
@@ -17,6 +16,9 @@ class HiFi(Service):
 
     #@override
     def msg(self, fromService, msgDict):
+        if "msg" not in msgDict:
+            return
+
         if msgDict["msg"] == "Disarmed":
             self._hifiOn()
 
@@ -42,16 +44,20 @@ class HiFi(Service):
             self._sendCommand("voldn")
 
         elif msgDict["msg"] == "setMediaSource":
-            command = self.config.get("hifi", "mediaSourceCommand")
-            self._sendCommand(command)
+            self._hifiMediaSource()
 
     def _hifiOn(self):
-            self._sendCommand("on")
-            self.controller.state.hifiOn = True
+        self._sendCommand("on")
+        self.controller.state.hifiOn = True
 
     def _hifiOff(self):
-            self._sendCommand("off")
-            self.controller.state.hifiOn = False
+        self._hifiMediaSource()         # reason: not to turn loud radio on upon awakening
+        self._sendCommand("off")
+        self.controller.state.hifiOn = False
+
+    def _hifiMediaSource(self):
+        command = self.config.get("hifi", "mediaSourceCommand")
+        self._sendCommand(command)
 
     def _sendCommand(self, command):
         remote = self.config.get("hifi", "remote")

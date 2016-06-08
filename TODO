@@ -36,10 +36,7 @@
   - AutoShade -- using entry/exit/sunrise/sunset - DONE
   - SleepSecurity -- sleep detection, etc - DONE
   - Media -- movie mode & co - DONE
-
-
-  !!!!!!!!!! TODO: double-line json triggers unhandled extra data error! !!!!!
-  !!!!!!!!!! TODO: also propagate custom 'id', so client can mark what the request was...? Do we need this??
+  - propagate custom 'id', so client can mark what the request was - DONE
 
   ----- Android Client
   - Names: UHC - Universal Home Control -- hlome, hyome, etc... Why? Needed a .com address :)
@@ -74,7 +71,7 @@
     - host, port for now
     - Server Configuration -- changes and uploads server config settings, LATER
   - ----------- continue HERE --------------------
-  - Paradox support - to report events - MORE TESTING NEEDED
+  - Paradox support - DONE
   - SunRiseSet -- service, reports timestamps on new days - DONE
   - Schedule - DONE
   - automators:
@@ -91,12 +88,32 @@
     - crash fix - DONE
     - crash fix #2
     - XBMC control
-    - connectivity feedback via icon
-    - A/C control
-    - hifi & projector buttons
-    - state feedback
+      - volume - DONE
+      - play icon on top: - DONE
+      - playlist:
+        - display - DONE
+        - when playing: switch hifi to our source - DONE
+        - short-tap: skip to song
+        - long-tap menu:  --- later
+          - Remove
+          - Add...
+          - Shuffle
+          - Repeat
+          - Clear
+          - Rescan
+      - browsing (new activity; can add directory or single files)
+    - connectivity feedback via icon - DONE
+    - out-of-house feedback via icon
+    - "comfort services" icon:
+      - A/C control - DONE
+      - hifi & projector buttons - DONE
+    - state feedback - DONE
+    - scene buttons  !!!!!!!
+      - movie: shades + lights + projector + hifi to PC + music pause
+      - living, cozy: see IconControl.cpp...
+    - testing: crashes if can't connect
+    - guestHost control (clicking logo icon? new icon?)
     - tablet screen
-    - scene buttons
     - disable autoshade until next exit
       - -> aka guest mode
       - icon feedback (sthg along "no auto" / manual)
@@ -107,6 +124,9 @@
       - set pw preference
         - based on auth request, detect remote host
         - disable option if not on local network
+  - settings cleanup
+  - help screen, explaining what to run, point to Python stuff
+  - upload to Android Market
   - preferences can be sent to Uhc -> RemoteConfig service; uses "ro" and "rw" to make FS writable
   - List of lights with on-off switch
     - LATER: long-press for dimmers, exact settings

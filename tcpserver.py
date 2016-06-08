@@ -64,6 +64,7 @@ class TcpServer(Service):
 
     def __init__(self, controller, config, eventloop):
         super().__init__(controller)
+        controller.state.tcpserver = self
         self.config = config
         self.eventloop = eventloop
 
@@ -98,7 +99,9 @@ class TcpServer(Service):
             del msgDict["origMsg"]
        
         if "id" in msgDict and msgDict["id"] != None:
-            targetConnection = self._getConnectionById(int(msgDict["id"]))
+            (numId, origId) = self._getConnectionIdAndOriginalId(msgDict["id"])
+            targetConnection = self._getConnectionById(numId)
+            msgDict["id"] = origId
 
         jsonStr = UhcJsonEncoder().encode(msgDict)
 
@@ -107,7 +110,27 @@ class TcpServer(Service):
         else:
             for connection in self.connections:
                 self._writeTo(connection, jsonStr)
-       
+
+    def broadcastState(self, stateMsgDict):
+        stateStr = UhcJsonEncoder().encode({ "msg": "state", "state": stateMsgDict })
+        for connection in self.connections:
+            self._writeTo(connection, stateStr)
+
+    def _getConnectionIdAndOriginalId(self, jsonId):
+        if not isinstance(jsonId, str):
+            return (jsonId, "")
+
+        numId = jsonId
+        origId = ""
+        commaPosition = jsonId.find(",")
+        if commaPosition != -1:
+            numId = jsonId[:commaPosition]
+            origId = jsonId[commaPosition + 1:]
+
+        numId = int(numId)
+
+        return (numId, origId)
+
     def _getConnectionById(self, id):
         for connection in self.connections:
             if connection.connectionid == id:
@@ -133,6 +156,10 @@ class TcpServer(Service):
             logging.error("Dest service missing from JSON")
             return
         jsonData["connection"] = connection
-        jsonData["id"] = connection.connectionid    # "accidentally" this is just convenient for JSONRPC
+        if "id" in jsonData:
+            jsonData["id"] = str(connection.connectionid) + "," + str(jsonData["id"])
+        else:
+            jsonData["id"] = connection.connectionid
+
         self.sendTo(jsonData["service"], jsonData)
 

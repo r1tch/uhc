@@ -3,6 +3,7 @@
 import asyncio
 import logging
 
+from airconditioner import Airconditioner
 from autoshade import AutoShade
 from autolight import AutoLight
 from hifi import HiFi
@@ -11,6 +12,8 @@ from kodi import Kodi
 from paradox import Paradox
 from tcpserver import TcpServer
 from zwave.mios import ZWaveMios
+from projector import Projector
+from scene import Scene
 from schedule import Schedule
 from sleepsense import SleepSense
 from state import State
@@ -21,16 +24,19 @@ class Controller:
     def __init__(self, config):
         self.config = config
         self.services = {}
-        self.state = State()
+        self.state = State(config)
 
     def _createServices(self, eventloop):
         """Hardcoding a list of services - later we might add auto-detection of services present"""
+        Airconditioner(self, self.config, eventloop)
         AutoShade(self, self.config, eventloop)
         AutoLight(self, self.config, eventloop)
         HiFi(self, self.config, eventloop)
         IrTrans(self, self.config, eventloop)
         Kodi(self, self.config, eventloop)
         Paradox(self, self.config, eventloop)
+        Projector(self, self.config, eventloop)
+        Scene(self, self.config, eventloop)
         Schedule(self, self.config, eventloop)
         SleepSense(self, self.config, eventloop)
         SunRiseSet(self, self.config, eventloop)

@@ -50,10 +50,21 @@ all over the app - to enable broadcasts sent to all services.
  { "msg": "irsend", "remote": "avr", "command": "off", "service": "irtrans" }
  { "msg": "irsend", "remote": "avr", "command": "on", "service": "irtrans" }
 
+- projector:
+ { "msg": "projectorOn", "service": "projector" }
+ { "msg": "projectorOff", "service": "projector" }
+
 - test hifi:
  { "msg": "hifiOn", "service": "hifi" }
  { "msg": "hifiOff", "service": "hifi" }
  { "msg": "setMediaSource", "service": "hifi" }
+
+- test AC controls:
+ { "msg": "acTestOn", "service": "airconditioner" }
+ { "msg": "acTestOff", "service": "airconditioner" }
+ { "msg": "acOn", "service": "airconditioner" }
+ { "msg": "acOff", "service": "airconditioner" }
+ { "msg": "acMode", "setTo": "NANA24", "service": "airconditioner" }
 
 ## Example Updates Sent to Remote Client
 

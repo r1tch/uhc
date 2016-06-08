@@ -98,7 +98,20 @@ class Config(configparser.ConfigParser):
         self.set("hifi", "remote", "avr")
         self.set("hifi", "mediaSourceCommand", "vid2")
 
+        self.add_section("projector")
+        self.set("projector", "remote", "dell")
+
+        self.add_section("airconditioner")
+        self.set("airconditioner", "remote", "samsungac")
+
         self.add_section("sleepsense")
         self.set("sleepsense", "bedroomzones", "5,7")
         self.set("sleepsense", "fallAsleepTimeMinutes", "30")
+
+        self.add_section("scene")
+        self.set("scene", "cozylightsOn", "Eloszoba")   # all others off
+        self.set("scene", "cozyshadesDown", "NappaliErkelyRedony,NappaliKertRedony,NappaliUtcaRedony,KonyhaRedony")
+        self.set("scene", "movieshadesDown", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony,LiloRedony")
+        self.set("scene", "moviescreen", "Vaszon")
+
 
