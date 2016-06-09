@@ -50,9 +50,15 @@ class ZWaveMios(Service):
                 self.request.stopLevelChange(int(msgDict["nodeid"]))
             if "name" in msgDict:
                 self.request.stopLevelChangeByName(msgDict["name"])
+
         elif msgDict["msg"] == "setAllLights":
             if "level" in msgDict:
                 self.request.setAllLights(int(msgDict["level"]))
+
+        elif msgDict["msg"] == "turnOnOnlyLights":
+            if "names" in msgDict:
+                lightsToBeOn = set(msgDict["names"].split(','))
+                self.request.turnOnOnlyLights(lightsToBeOn)
 
     def _allNodesMsg(self):
         return { "msg": "gotNodes", "nodes": self.zwavenodes.allNodes()}

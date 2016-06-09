@@ -74,11 +74,18 @@ class Kodi(Service):
         logging.debug("Sending {}".format(jsonStr))
         self.clientProtocol.write(jsonStr)
 
-    def _initiateConnection(self):
+    @asyncio.coroutine
+    def doconnect(self):
         host = self.config.get("kodi", "host")
         port = self.config.getint("kodi", "port")
-        coroutine = self.eventloop.create_connection(lambda: Kodi.ClientProtocol(self), host, port)
-        asyncio.ensure_future(coroutine)
+        try:
+            yield from self.eventloop.create_connection(lambda: Kodi.ClientProtocol(self), host, port)
+        except ConnectionRefusedError as e: 
+            logging.error("Kodi: connection refused to {}:{}".format(host, port))
+            self._delayedReconnect()
+        
+    def _initiateConnection(self):
+        asyncio.ensure_future(self.doconnect())
 
     def _onConnectionMade(self, clientProtocol):
         if self.clientProtocol:

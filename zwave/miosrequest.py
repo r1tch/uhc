@@ -59,6 +59,16 @@ class ZWaveMiosRequest:
     def setAllLights(self, level):
         for node in self.zwavenodes.allNodes():
             if node.type in ("BinaryLight", "DimmableLight"):
+                self.setLevel(node.id, level)
+
+    def turnOnOnlyLights(self, lightsToBeOn):
+        for node in self.zwavenodes.allNodes():
+            if node.type not in ("BinaryLight", "DimmableLight"):
+                continue
+
+            if node.name in lightsToBeOn:
+                self.setLevel(node.id, 100)
+            else:
                 self.setLevel(node.id, 0)
 
     # Worker thread methods

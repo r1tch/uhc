@@ -109,9 +109,11 @@ class Config(configparser.ConfigParser):
         self.set("sleepsense", "fallAsleepTimeMinutes", "30")
 
         self.add_section("scene")
-        self.set("scene", "cozylightsOn", "Eloszoba")   # all others off
+        self.set("scene", "cozylightsOn", "Konyha")   # all others off
         self.set("scene", "cozyshadesDown", "NappaliErkelyRedony,NappaliKertRedony,NappaliUtcaRedony,KonyhaRedony")
-        self.set("scene", "movieshadesDown", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony,LiloRedony")
+        self.set("scene", "cozymusicDirectory", "smb://NAS/USB_Storage/Zene/Frank Sinatra - My Way The Best Of Frank Sinatra/")
         self.set("scene", "moviescreen", "Vaszon")
+        self.set("scene", "movieshadesDown", "NappaliErkelyRedony,NappaliKertRedony,NappaliOldalRedony,NappaliUtcaRedony,KonyhaRedony,HaloRedony,DolgozoRedony,LiloRedony")
+        self.set("scene", "normallightsOn", "NappaliKanape,NappaliEbedlo")   # do not touch others
 
 

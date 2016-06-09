@@ -43,6 +43,9 @@ class Airconditioner(Service):
             # delayed invocation to prevent overload (eg when raising temp quickly)
             self.controller.state.acMode = msgDict["setTo"]
 
+            if self.controller.state.acOn == False:     # sending the mode would turn AC on
+                return
+
             if self.nextCmdHandle:
                 self.nextCmdHandle.cancel()             # supercede previous command
 

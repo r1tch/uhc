@@ -82,10 +82,17 @@ class IrTrans(Service):
 
         self._initiateConnection()
 
-    def _initiateConnection(self):
+    @asyncio.coroutine
+    def doconnect(self):
         host = self.config.get("irtrans", "host")
-        coroutine = self.eventloop.create_connection(lambda: IrTrans.ClientProtocol(self), host, IRTRANS_PORT)
-        asyncio.ensure_future(coroutine)
+        try:
+            yield from self.eventloop.create_connection(lambda: IrTrans.ClientProtocol(self), host, IRTRANS_PORT)
+        except ConnectionRefusedError as e: 
+            logging.error("IRTrans: connection refused to {}:{}".format(host, IRTRANS_PORT))
+            self._delayedReconnect()
+    
+    def _initiateConnection(self):
+        asyncio.ensure_future(self.doconnect())
 
     def _onConnectionMade(self, clientProtocol):
         logging.debug("IrTrans connected to {}".format(clientProtocol.transport.get_extra_info('peername'))) 

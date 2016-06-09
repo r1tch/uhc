@@ -101,22 +101,27 @@
           - Repeat
           - Clear
           - Rescan
+          - Use as Cozy Mode music (for directories; needs cfgfile update feature)
       - browsing (new activity; can add directory or single files)
     - connectivity feedback via icon - DONE
     - out-of-house feedback via icon
     - "comfort services" icon:
       - A/C control - DONE
       - hifi & projector buttons - DONE
-    - state feedback - DONE
+    - state feedback (left house, etc), not working
     - scene buttons  !!!!!!!
       - movie: shades + lights + projector + hifi to PC + music pause
       - living, cozy: see IconControl.cpp...
+      - none: _all_ shades up-down based on lights; living room lights on if dark
+      - todo more test, music does not play?
     - testing: crashes if can't connect
     - guestHost control (clicking logo icon? new icon?)
     - tablet screen
     - disable autoshade until next exit
       - -> aka guest mode
-      - icon feedback (sthg along "no auto" / manual)
+      - icon feedback -> just closed eye; that icon can be tapped
+    - upper left icon does not work well
+    - settings -> help: nice description about what this is, where uhc.py can be found, etc.
   - save state into /tmp for restarts (simply as json, re-read on startup)
   - password
     - md5-based auth: random string as challenge; append pw, send hash back
