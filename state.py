@@ -7,7 +7,7 @@ class State:
         self.atHome = False   # we're home if alarm system is unarmed
         self.asleep = False  # detected based on movements around the house
         self.flashAlarmState = "off"    # "delay", "preflash", "full"
-        self.guestHost = False # if true, no automation when home
+        self.guestMode = False # if true, no automation when home
         self.hifiOn = False
         self.projectorOn = False
         self.acOn = False
@@ -27,7 +27,7 @@ class State:
         ret["atHome"] = self.atHome
         ret["asleep"] = self.asleep
         ret["flashAlarmState"] = self.flashAlarmState
-        ret["guestHost"] = self.guestHost
+        ret["guestMode"] = self.guestMode
         ret["hifiOn"] = self.hifiOn
         ret["projectorOn"] = self.projectorOn
         ret["acOn"] = self.acOn

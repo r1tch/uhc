@@ -101,6 +101,8 @@ class TcpServer(Service):
         if "id" in msgDict and msgDict["id"] != None:
             (numId, origId) = self._getConnectionIdAndOriginalId(msgDict["id"])
             targetConnection = self._getConnectionById(numId)
+            if not targetConnection:    # in the meantime our connection has closed
+                return
             msgDict["id"] = origId
 
         jsonStr = UhcJsonEncoder().encode(msgDict)
@@ -139,6 +141,8 @@ class TcpServer(Service):
 
     def _writeTo(self, connection, jsonStr):
         connection.transport.write((jsonStr + "\n").encode())
+        #peername = connection.transport.get_extra_info('peername')
+        #logging.debug("sending to [{}]: {}".format(peername, jsonStr[:280]))
 
     def _createRemoteProtocol(self):
         return TcpServer.RemoteProtocol(self)

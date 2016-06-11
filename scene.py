@@ -60,6 +60,9 @@ class Scene(Service):
         # for now, playlistid and playerid hardcoded...
         cozymusicDirectory = self.config.get("scene", "cozymusicDirectory")
         if cozymusicDirectory:
+            for playerid in (0, 1, 2, 3, 4):
+                self._sendToKodi({"method": "Player.Stop", "params": { "playerid": playerid }})
+
             self._sendToKodi({"method": "Playlist.Clear", "params":{"playlistid":0}})
             self._sendToKodi({"method": "Player.SetShuffle", "params":{"playerid":0, "shuffle": True}})
             self._sendToKodi({"method": "Playlist.Add", "params":{"playlistid":0, "item": {"directory": cozymusicDirectory}}})
@@ -124,11 +127,11 @@ class Scene(Service):
         if self._isDark():
             for light in self.config.get("scene", "normallightsOn").split(','):
                 self.sendTo("zwave", { "msg": "setLevel", "name": shade, "level": 100 })
-
+ 
         cozymusicDirectory = self.config.get("scene", "cozymusicDirectory")
         if cozymusicDirectory:
             self._sendToKodi({"method": "Player.SetShuffle", "params":{"playerid":0, "shuffle": False}})
-            self._sendToKodi({"method": "Player.PlayPause", "params": {"playerid": 0}})
+            self._sendToKodi({"method": "Player.PlayPause", "params": {"playerid": 0, "play": False}})
 
 
     def _isDark(self, when = 0):
@@ -142,7 +145,7 @@ class Scene(Service):
         return not self._isDark(when)
 
     def _sendToKodi(self, msgDict):
-        msgDict["jsonrpc"] = "2.0"
+        msgDict["service"] = "kodi"
         self.sendTo("kodi", msgDict)
 
 

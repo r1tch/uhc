@@ -60,7 +60,9 @@ class Kodi(Service):
 
     #@override
     def msg(self, fromService, msgDict):
-        if "service" not in msgDict or msgDict["service"] != self.id():      # do not interpret broadcasts; just forward directly sent msgs
+        # do not interpret broadcasts; just forward directly sent msgs
+        # -- this also means messages sent from uhc must have extra service field added!
+        if "service" not in msgDict or msgDict["service"] != self.id():
             return
 
         msgDict["jsonrpc"] = "2.0"
